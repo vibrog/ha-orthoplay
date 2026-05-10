@@ -6,6 +6,7 @@
   "documentation": "https://github.com/vibrog/ha-orthoplay",
   "integration_type": "device",
   "iot_class": "local_push",
+  "issue_tracker": "https://github.com/vibrog/ha-orthoplay/issues",
   "loggers": ["orthoplayws"],
   "version": "0.0.1",
   "zeroconf": [
