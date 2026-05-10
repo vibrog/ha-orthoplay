@@ -16,7 +16,7 @@ On connection, the integration performs the Orthoplay handshake
 including volume, input source, and playback status.
 
 The speaker can be discovered automatically on the local network
-via mDNS/Zeroconf (`_http._tcp` / `_airplay._tcp`), or
+via mDNS/Zeroconf (`_http._tcp`/`_airplay._tcp`), or
 added manually by IP address.
 
 ### Features
@@ -24,7 +24,7 @@ added manually by IP address.
 - Source selection: AirPlay, Spotify Connect, Bluetooth, optical, line-in
 - The entity icon changes dynamically to reflect the active input source.
 - Playback controls are hidden for optical and line-in sources.
-- The seek position updates in real time from the speaker.
+- The track position updates in real time from the speaker.
 - Reconnects automatically when speaker wakes from standby.
 
 ### Limitations
@@ -81,7 +81,7 @@ SSH into your HA instance and clone the repository directly into your
 config directory:
 
 ```bash
-cd /config
+dir=/config/custom_components && [ -d $dir ] || mkdir -p $dir && cd $dir
 git clone https://github.com/vibrog/ha-orthoplay
 ./ha-orthoplay/scripts/link.sh
 ha core restart
