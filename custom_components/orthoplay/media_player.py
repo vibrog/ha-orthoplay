@@ -38,6 +38,7 @@ _FEATURES_BASE = (
     | MediaPlayerEntityFeature.VOLUME_SET
     | MediaPlayerEntityFeature.VOLUME_STEP
     | MediaPlayerEntityFeature.PLAY_MEDIA
+    | MediaPlayerEntityFeature.CLEAR_PLAYLIST
 )
 
 # Additional features when source supports track navigation
@@ -227,3 +228,6 @@ class OD11MediaPlayer(MediaPlayerEntity):
             raise ServiceValidationError(
                 "OD-11 does not support inserting tracks at the current position"
             )
+
+    async def async_clear_playlist(self) -> None:
+        await self._client.playlist_clear()
