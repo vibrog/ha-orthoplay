@@ -5,8 +5,6 @@ A custom component for local control of the OD-11 and OB-4
 [wireless speakers from Teenage Engineering][te]
 via its WebSocket interface.
 
-[te]: https://teenage.engineering/products/wireless-speakers
-
 ## How it works
 
 The OD-11 exposes a WebSocket server on port 8081. This integration
@@ -109,5 +107,8 @@ This integration was developed by reverse engineering the
 [Orthoplay](https://www.orthoplay.com/) web application for the OD-11,
 with the assistance of [Claude AI](https://claude.ai/). The WebSocket
 interfaces were derived from the Orthoplay JavaScript source, and
-implemented on the Home Assistant integration structure, over a few
-iterations.
+implemented on the [Home Assistant integration structure][dev], over a
+few iterations.
+
+[te]: https://teenage.engineering/products/wireless-speakers
+[dev]: https://developers.home-assistant.io/
