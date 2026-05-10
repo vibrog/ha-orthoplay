@@ -9,10 +9,10 @@ DEFAULT_NAME = "OD-11"
 # OD-11 input sources (confirmed from JS app source)
 SOURCES = {
     0: "AirPlay",
-    1: "Cloud / Spotify",
+    1: "Spotify",
     5: "Bluetooth",
     4: "Optical",
-    3: "Line In",
+    3: "Line-In",
 }
 SOURCE_ICONS = {
     0: "mdi:cast-audio-variant",
