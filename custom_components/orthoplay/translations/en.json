@@ -1,0 +1,29 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Set up OD-11 wireless loudspeaker",
+        "data": {
+          "host": "IP address",
+          "port": "WebSocket port",
+          "name": "Name"
+        },
+        "data_description": {
+          "host": "IP address of the OD-11 speaker (e.g. 192.168.1.42). The default od-11.local may not resolve on all networks.",
+          "port": "WebSocket port — default is 8081.",
+          "name": "Friendly name shown in Home Assistant."
+        }
+      },
+      "confirm": {
+        "title": "OD-11 speaker found",
+        "description": "Do you want to add **{name}** ({host}) to Home Assistant?"
+      }
+    },
+    "error": {
+      "cannot_connect": "Could not connect to the speaker. Check the IP address and make sure the speaker is on and connected to the network."
+    },
+    "abort": {
+      "already_configured": "This speaker is already configured."
+    }
+  }
+}
