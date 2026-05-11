@@ -28,6 +28,3 @@ SOURCE_NAME_TO_ID = {name: src_id for src_id, name in SOURCES.items()}
 # Volume range on the OD-11
 VOLUME_MIN = 0
 VOLUME_MAX = 100
-
-# Zeroconf service type the OD-11 advertises
-ZEROCONF_TYPE = "_airplay._tcp.local."
