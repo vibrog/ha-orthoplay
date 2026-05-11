@@ -27,8 +27,8 @@ _LOGGER = logging.getLogger(__name__)
 # Sources that support playback control
 SOURCES_WITH_PLAYBACK_CONTROL = {
     0,  # AirPlay   -- AirPlay protocol supports next/prev
-    1,  # Cloud     -- Spotify Connect supports full track control
-    5,  # Bluetooth -- AVRCP profile supports next/prev
+    1,  # Spotify   -- Spotify Connect supports full track control
+    2,  # Playlist
 }
 
 # Base features always available
@@ -37,8 +37,6 @@ _FEATURES_BASE = (
     | MediaPlayerEntityFeature.SELECT_SOURCE
     | MediaPlayerEntityFeature.VOLUME_SET
     | MediaPlayerEntityFeature.VOLUME_STEP
-    | MediaPlayerEntityFeature.PLAY_MEDIA
-    | MediaPlayerEntityFeature.CLEAR_PLAYLIST
 )
 
 # Additional features when source supports track navigation
@@ -49,6 +47,8 @@ _FEATURES_PLAYBACK_CONTROL = (
     | MediaPlayerEntityFeature.NEXT_TRACK
     | MediaPlayerEntityFeature.PREVIOUS_TRACK
     | MediaPlayerEntityFeature.SEEK
+    | MediaPlayerEntityFeature.PLAY_MEDIA
+    | MediaPlayerEntityFeature.CLEAR_PLAYLIST
 )
 
 
