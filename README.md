@@ -15,9 +15,9 @@ On connection, the integration performs the Orthoplay handshake
 (`global_join`/`group_join`) to receive the current speaker state,
 including volume, input source, and playback status.
 
-The speaker can be discovered automatically on the local network
-via mDNS/Zeroconf (`_http._tcp`/`_airplay._tcp`), or
-added manually by IP address.
+The speaker can be discovered automatically on the local network with
+[Zeroconf][] using DNS-SD over mDNS (`_http._tcp`/`_airplay._tcp`),
+or added manually by IP address.
 
 ### Features
 
@@ -116,6 +116,7 @@ implemented on the [Home Assistant integration structure][dev], over a
 few iterations.
 
 [od11]: https://teenage.engineering/products/od-11
+[Zeroconf]: https://www.zeroconf.org/
 [AVRCP]: https://www.bluetooth.com/specifications/
 [Soundcloud]: https://soundcloud.com/
 [dev]: https://developers.home-assistant.io/
