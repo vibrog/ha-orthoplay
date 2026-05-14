@@ -1,8 +1,8 @@
 
 # OD-11 loudspeaker component for Home Assistant
 
-A custom component for local control of the OD-11 and OB-4
-[wireless speakers from Teenage Engineering][te]
+A custom component for local control of the
+[OD-11 wireless speaker from Teenage Engineering][od11]
 via its WebSocket interface.
 
 ## How it works
@@ -21,8 +21,7 @@ added manually by IP address.
 
 ### Features
 
-- **Sources** are populated dynamically, ensuring compatibility with
-  both OD-11 and OB-4 without hardcoded source lists.
+- The list of **sources** are populated dynamically.
 - The entity icon changes to reflect the active input source.
 - **Playback controls** are shown or hidden dynamically based on
   the capabilities reported by the speaker for each source.
@@ -47,7 +46,6 @@ added manually by IP address.
   audio formats are accepted.
 - **Queue insertion** (`enqueue: next`) is not supported by the
   `playlist_add_url` command, and the action will return an error.
-- The integration is not tested with the **OB-4 speaker**.
 
 ### Media player actions supported
 
@@ -117,7 +115,7 @@ interfaces were derived from the Orthoplay JavaScript source, and
 implemented on the [Home Assistant integration structure][dev], over a
 few iterations.
 
-[te]: https://teenage.engineering/products/wireless-speakers
+[od11]: https://teenage.engineering/products/od-11
 [AVRCP]: https://www.bluetooth.com/specifications/
 [Soundcloud]: https://soundcloud.com/
 [dev]: https://developers.home-assistant.io/
