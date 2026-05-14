@@ -41,10 +41,6 @@ CONNECT_TIMEOUT = 10
 PROTOCOL_MAJOR = 0
 PROTOCOL_MINOR = 4
 
-# Stable UID for this HA client (generated once per process)
-_CLIENT_UID = str(uuid.uuid4())
-
-
 class OD11Client:
     """Persistent WebSocket connection to an OD-11 speaker."""
 
@@ -57,6 +53,8 @@ class OD11Client:
         self._host = host
         self._port = port
         self._session = session
+        self._client_name = "homeassistant" # socket.gethostname()
+        self._client_uid = str(uuid.uuid4())
 
         self._ws: aiohttp.ClientWebSocketResponse | None = None
         self._loop_task: asyncio.Task | None = None
@@ -66,7 +64,9 @@ class OD11Client:
         self.state: dict[str, Any] = {
             "playing":        False,
             "volume":         None,   # int 0-100
-            "source":         None,   # int 0/1/3/4/5
+            "volume_max":     100,    # updated from group_max_volume
+            "source":         None,   # int 0-5
+            "sources":        [],     # source dicts from group_joined
             "title":          None,
             "artist":         None,
             "album":          None,
@@ -143,21 +143,10 @@ class OD11Client:
             )
             self._connected = True
             _LOGGER.info("Connected to OD-11 at %s", self._url)
-
-            # Step 1 — global_join with protocol version
             await self._send("global_join", {
                 "protocol_major_version": PROTOCOL_MAJOR,
                 "protocol_minor_version": PROTOCOL_MINOR,
             })
-            # Step 2 — group_join to get state dump
-            await self._send("group_join", {
-                "color_index":   0,
-                "name":          "homeassistant",
-                "realtime_data": True,
-                "uid":           _CLIENT_UID,
-            })
-
-            self._fire_callbacks()
             return True
         except Exception as err:
             _LOGGER.debug("OD-11 connect failed: %s", err)
@@ -208,7 +197,7 @@ class OD11Client:
         msg: dict[str, Any] = {"action": action}
         if data:
             msg.update(data)
-        _LOGGER.debug("OD-11 >>> %s", msg)
+        _LOGGER.debug("Sent %s", msg)
         try:
             await self._ws.send_str(json.dumps(msg))
         except Exception as err:
@@ -218,31 +207,43 @@ class OD11Client:
         try:
             msg = json.loads(raw)
         except json.JSONDecodeError:
-            _LOGGER.debug("OD-11 non-JSON: %s", raw)
+            _LOGGER.debug("Received non-JSON: %s", raw)
             return
-        _LOGGER.debug("OD-11 <<< %s", msg)
+        _LOGGER.debug("Received %s", msg)
 
-        # global_joined and group_joined deliver state as an array of
-        # update messages under the "state" key.
+        # global_joined and group_joined deliver state as
+        # an array of update messages under the "state" key
         response = msg.get("response", "")
-        if response in ("global_joined", "group_joined"):
+        changed = False                        # initialise before any branch
+        if response == "global_joined":
+            for update in msg.get("state", []):
+                changed |= self._apply_update(update)
+            # After global_joined, send group_join
+            asyncio.create_task(self._send("group_join", {
+                "color_index":   0,
+                "name":          self._client_name,
+                "realtime_data": True,
+                "uid":           self._client_uid,
+            }))
+        elif response == "group_joined":
+            sources = msg.get("sources", [])
+            changed |= self._set("sources", sources)
             state_updates = msg.get("state", [])
-            changed = False
             for update in state_updates:
                 changed |= self._apply_update(update)
-            # After group_joined, request current track position
-            if response == "group_joined":
+            # Request current track position when needed
+            if not self.state["playing"] and self.state["source"] < 3:
                 asyncio.create_task(self.track_get_pos())
-            if changed:
-                self._fire_callbacks()
-            return
-
         # All other messages are either push updates (keyed by "update")
-        # or responses to specific commands (keyed by "response").
-        event = msg.get("update") or response
-        if event:
-            if self._apply_update(msg):
-                self._fire_callbacks()
+        # or responses to specific commands (keyed by "response")
+        else:
+            event = msg.get("update") or response
+            if event:
+                if self._apply_update(msg):
+                    self._fire_callbacks()
+            return
+        if changed:
+            self._fire_callbacks()
 
     def _apply_update(self, msg: dict) -> bool:
         """Apply a single update message. Returns True if state changed."""
@@ -284,6 +285,9 @@ class OD11Client:
                 changed |= self._set("track_position", float(msg["position"]))
                 changed |= self._set("position_updated_at", datetime.now(timezone.utc))
 
+        elif event == "group_max_volume":
+            changed |= self._set("volume_max", msg.get("value"))
+
         elif event == "entering_standby":
             # Speaker is going to sleep — WS will drop shortly
             _LOGGER.info("OD-11 entering standby")
@@ -291,7 +295,7 @@ class OD11Client:
         elif event not in ("", "client_joined_group", "client_left_group",
                            "speaker_added", "speaker_lost", "speaker_group",
                            "group_master_changed", "client_color_changed",
-                           "client_connected", "group_max_volume",
+                           "client_connected",
                            "speaker_state_changed", "group_notification"):
             _LOGGER.debug("OD-11 unhandled event '%s': %s", event, msg)
 

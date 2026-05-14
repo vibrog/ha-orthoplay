@@ -20,16 +20,9 @@ from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.exceptions import ServiceValidationError
 
 from .client import OD11Client
-from .const import DEFAULT_NAME, DOMAIN, SOURCES, SOURCE_ICONS, SOURCE_NAME_TO_ID, VOLUME_MAX
+from .const import DEFAULT_NAME, DOMAIN, SOURCE_ICONS
 
 _LOGGER = logging.getLogger(__name__)
-
-# Sources that support playback control
-SOURCES_WITH_PLAYBACK_CONTROL = {
-    0,  # AirPlay   -- AirPlay protocol supports next/prev
-    1,  # Spotify   -- Spotify Connect supports full track control
-    2,  # Playlist
-}
 
 # Base features always available
 _FEATURES_BASE = (
@@ -39,18 +32,24 @@ _FEATURES_BASE = (
     | MediaPlayerEntityFeature.VOLUME_STEP
 )
 
-# Additional features when source supports track navigation
-_FEATURES_PLAYBACK_CONTROL = (
-    MediaPlayerEntityFeature.PLAY
-    | MediaPlayerEntityFeature.STOP
-    | MediaPlayerEntityFeature.PAUSE        # mapped to playback_stop
-    | MediaPlayerEntityFeature.NEXT_TRACK
-    | MediaPlayerEntityFeature.PREVIOUS_TRACK
-    | MediaPlayerEntityFeature.SEEK
-    | MediaPlayerEntityFeature.PLAY_MEDIA
-    | MediaPlayerEntityFeature.CLEAR_PLAYLIST
-)
-
+# Per-source feature flags, derived from group_joined sources list
+_SOURCE_FEATURE_MAP = {
+    "supports_pause": (
+        MediaPlayerEntityFeature.PLAY
+        | MediaPlayerEntityFeature.PAUSE
+        | MediaPlayerEntityFeature.STOP
+    ),
+    "supports_skip": (
+        MediaPlayerEntityFeature.NEXT_TRACK
+        | MediaPlayerEntityFeature.PREVIOUS_TRACK
+    ),
+    "supports_seek":
+        MediaPlayerEntityFeature.SEEK,
+    "supports_jump_to_track_url": (
+        MediaPlayerEntityFeature.PLAY_MEDIA
+        | MediaPlayerEntityFeature.CLEAR_PLAYLIST
+    ),
+}
 
 async def async_setup_entry(
     hass: HomeAssistant,
@@ -67,7 +66,6 @@ class OD11MediaPlayer(MediaPlayerEntity):
 
     _attr_has_entity_name = False
     _attr_device_class = MediaPlayerDeviceClass.SPEAKER
-    _attr_source_list = list(SOURCES.values())
 
     def __init__(self, client: OD11Client, name: str, entry_id: str) -> None:
         self._client = client
@@ -95,10 +93,15 @@ class OD11MediaPlayer(MediaPlayerEntity):
     @property
     def supported_features(self) -> MediaPlayerEntityFeature:
         """Return features based on active source."""
+        features = _FEATURES_BASE
         src_id = self._client.state["source"]
-        if src_id in SOURCES_WITH_PLAYBACK_CONTROL:
-            return _FEATURES_BASE | _FEATURES_PLAYBACK_CONTROL
-        return _FEATURES_BASE
+        for src in self._client.state["sources"]:
+            if src["id"] == src_id:
+                for capability, feature_flags in _SOURCE_FEATURE_MAP.items():
+                    if src.get(capability):
+                        features |= feature_flags
+                break
+        return features
 
     @property
     def available(self) -> bool:
@@ -107,7 +110,7 @@ class OD11MediaPlayer(MediaPlayerEntity):
 
     @property
     def icon(self) -> str:
-        return SOURCE_ICONS.get(self._client.state["source"], "mdi:speaker")
+        return SOURCE_ICONS.get(self.source, SOURCE_ICONS[None])
 
     @property
     def state(self) -> MediaPlayerState:
@@ -122,7 +125,8 @@ class OD11MediaPlayer(MediaPlayerEntity):
         vol = self._client.state["volume"]
         if vol is None:
             return None
-        return vol / VOLUME_MAX
+        vol_max = self._client.state["volume_max"]
+        return vol / vol_max
 
     @property
     def media_title(self) -> str | None:
@@ -157,9 +161,16 @@ class OD11MediaPlayer(MediaPlayerEntity):
         return self._client.state.get("position_updated_at")
 
     @property
+    def source_list(self) -> list[str]:
+        return [s["name"] for s in self._client.state["sources"]]
+
+    @property
     def source(self) -> str | None:
         src_id = self._client.state["source"]
-        return SOURCES.get(src_id)
+        for s in self._client.state["sources"]:
+            if s["id"] == src_id:
+                return s["name"]
+        return None
 
     # ------------------------------------------------------------------
     # Commands
@@ -193,7 +204,8 @@ class OD11MediaPlayer(MediaPlayerEntity):
 
     async def async_set_volume_level(self, volume: float) -> None:
         """HA passes 0.0-1.0; convert to OD-11 scale (0-100)."""
-        await self._client.volume_set(round(volume * VOLUME_MAX))
+        vol_max = self._client.state["volume_max"]
+        await self._client.volume_set(round(volume * vol_max))
 
     async def async_volume_up(self) -> None:
         await self._client.volume_up()
@@ -202,11 +214,11 @@ class OD11MediaPlayer(MediaPlayerEntity):
         await self._client.volume_down()
 
     async def async_select_source(self, source: str) -> None:
-        src_id = SOURCE_NAME_TO_ID.get(source)
-        if src_id is not None:
-            await self._client.set_source(src_id)
-        else:
-            _LOGGER.warning("Unknown OD-11 source: %s", source)
+        for s in self._client.state["sources"]:
+            if s["name"] == source:
+                await self._client.set_source(s["id"])
+                return
+        _LOGGER.warning("Unknown source: %s", source)
 
     async def async_play_media(self, media_type: str, media_id: str, **kwargs) -> None:
         """Play media on the OD-11."""

@@ -21,11 +21,13 @@ added manually by IP address.
 
 ### Features
 
-- Source selection: AirPlay, Spotify Connect, Bluetooth, optical, line-in
-- The entity icon changes dynamically to reflect the active input source.
-- Playback controls are hidden for optical and line-in sources.
-- The track position updates in real time from the speaker.
-- Reconnects automatically when speaker wakes from standby.
+- **Sources** are populated dynamically, ensuring compatibility with
+  both OD-11 and OB-4 without hardcoded source lists.
+- The entity icon changes to reflect the active input source.
+- **Playback controls** are shown or hidden dynamically based on
+  the capabilities reported by the speaker for each source.
+- The **track position** updates in real time from the speaker.
+- **Reconnects** automatically when speaker wakes from standby.
 
 ### Limitations
 
@@ -35,12 +37,17 @@ added manually by IP address.
 - **Pause** is equivalent to **stop**
   because there is no separate pause command on the OD-11.
 - **Album art** is not provided by the OD-11.
-- The **play media** action rely on the `playlist_add_url` command
-  which may be deprecated (OD-11 used to support Soundcloud).
-  **Queue insertion** (`enqueue: next`) is not supported, and
-  the action will return an error.
-- Not tested with the **OB-4 speaker**, but expected to work with
-  minor alterations of the sources (line-in, bluetooth, radio, disk).
+- **Bluetooth next/previous**: The OD-11 does not support [AVRCP][], so
+  track navigation is not available for Bluetooth sources.
+- The OD-11 **playlist** functionality is no longer officially
+  supported by Teenage Engineering. The **play media** action rely on
+  the `playlist_add_url` command and may still work for certain URLs.
+  The OD-11 used to support [Soundcloud][] and generic URLs, but
+  further investigation is required to determine which sources and
+  audio formats are accepted.
+- **Queue insertion** (`enqueue: next`) is not supported by the
+  `playlist_add_url` command, and the action will return an error.
+- The integration is not tested with the **OB-4 speaker**.
 
 ### Media player actions supported
 
@@ -111,4 +118,6 @@ implemented on the [Home Assistant integration structure][dev], over a
 few iterations.
 
 [te]: https://teenage.engineering/products/wireless-speakers
+[AVRCP]: https://www.bluetooth.com/specifications/
+[Soundcloud]: https://soundcloud.com/
 [dev]: https://developers.home-assistant.io/
