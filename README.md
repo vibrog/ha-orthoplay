@@ -33,8 +33,12 @@ or added manually by IP address.
 - **Turn on** is not supported because the OD-11 can only be woken
   by pressing the function button. The integration reconnects
   automatically once the speaker is reachable.
+  There is also a **sleep** command that may be used for each speaker.
 - **Pause** is equivalent to **stop**
   because there is no separate pause command on the OD-11.
+- **Mute** may be implemented as a command per speaker, or
+  by storing the current volume and set volume to 0.
+- **Sound mode** may be implemented using switches or predefined sound profiles.
 - **Album art** is not provided by the OD-11.
 - **Bluetooth next/previous**: The OD-11 does not support [AVRCP][], so
   track navigation is not available for Bluetooth sources.
@@ -57,10 +61,10 @@ or added manually by IP address.
 | `volume_up`            | ✓ | `group_change_volume amount:1`                     |
 | `volume_down`          | ✓ | `group_change_volume amount:-1`                    |
 | `volume_set`           | ✓ | `group_set_volume`                                 |
-| `volume_mute`          |   | Considering `group_set_volume vol:0`               |
-| `select_sound_mode`    |   | Considering `group_set_eq_{bass,mid,treble}_boost` |
+| `volume_mute`          |   | `group_set_volume vol:0`                           |
+| `select_sound_mode`    |   | `group_set_eq_{bass,mid,treble}_boost`             |
 | `media_play`           | ✓ | `playback_start`                                   |
-| `media_pause`          | ✓ | `playback_stop` (no separate pause on OD-11)       |
+| `media_pause`          | ✓ | `playback_stop`                                    |
 | `media_stop`           | ✓ | `playback_stop`                                    |
 | `media_next_track`     | ✓ | `track_skip_to_next`                               |
 | `media_previous_track` | ✓ | `track_skip_to_prev`                               |
