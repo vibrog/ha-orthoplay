@@ -26,6 +26,9 @@ or added manually by IP address.
 - **Playback controls** are shown or hidden dynamically based on
   the capabilities reported by the speaker for each source.
 - The **track position** updates in real time from the speaker.
+- Speaker devices are added to the device registry
+- Connection state sensors for each speaker:
+  bluetooth, optical (toslink), line in, wifi quality
 - **Reconnects** automatically when speaker wakes from standby.
 
 ### Limitations

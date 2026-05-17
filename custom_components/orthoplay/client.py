@@ -315,6 +315,12 @@ class OD11Client:
                     "box_serial":   speaker.get("box_serial",   existing.get("box_serial")),
                     "revision":     speaker.get("revision",     existing.get("revision")),
                     "channel":      speaker.get("channel",      existing.get("channel")),
+                    "bt":           speaker.get("bt",           existing.get("bt")),
+                    "toslink":      speaker.get("toslink",      existing.get("toslink")),
+                    "linein":       speaker.get("linein",       existing.get("linein")),
+                    "muted":        speaker.get("muted",        existing.get("muted")),
+                    "sleep_enable": speaker.get("sleep_enable", existing.get("sleep_enable")),
+                    "wifi_quality": speaker.get("wifi_quality", existing.get("wifi_quality")),
                 })
                 self.device["speakers"][mac] = existing
                 changed = True
