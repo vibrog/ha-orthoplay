@@ -116,7 +116,7 @@ list to find the speaker's IP address if needed.
 
 This integration was developed by reverse engineering the
 [Orthoplay](https://www.orthoplay.com/) web application for the OD-11,
-with the assistance of [Claude AI](https://claude.ai/). The WebSocket
+with the assistance of [Claude](https://claude.ai/) AI. The WebSocket
 interfaces were derived from the Orthoplay JavaScript source, and
 implemented on the [Home Assistant integration structure][dev], over a
 few iterations.
