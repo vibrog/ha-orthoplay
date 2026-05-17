@@ -8,7 +8,7 @@
   "iot_class": "local_push",
   "issue_tracker": "https://github.com/vibrog/ha-orthoplay/issues",
   "loggers": ["orthoplayws"],
-  "version": "0.0.4",
+  "version": "0.0.5",
   "zeroconf": [
     {"type":"_http._tcp.local.","name":"od-11*"},
     {"type":"_airplay._tcp.local.","properties":{"manufacturer":"teenage engineering"}}
