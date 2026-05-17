@@ -28,7 +28,7 @@ or added manually by IP address.
 - The **track position** updates in real time from the speaker.
 - Speaker devices are added to the device registry
 - Connection state sensors for each speaker:
-  bluetooth, optical (toslink), line in, wifi quality
+  bluetooth, optical, line in, wifi quality
 - **Reconnects** automatically when speaker wakes from standby.
 
 ### Limitations
