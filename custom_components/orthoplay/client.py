@@ -74,6 +74,9 @@ class OD11Client:
             "track_duration": None,   # float, seconds (converted from duration_ms)
             "track_position": None,
             "position_updated_at": None,  # datetime, for HA interpolation   # float, fraction 0.0-1.0
+            "eq_bass":             False,
+            "eq_mid":              False,
+            "eq_treble":           False,
         }
 
         # Static device metadata — populated from global_joined
@@ -137,6 +140,11 @@ class OD11Client:
     # Source / standby
     async def set_source(self, src: int)        -> None: await self._send("group_set_input_source", {"source": src})
     async def enter_standby(self)               -> None: await self._send("group_enter_standby")
+
+    # Equalizer (sound modes)
+    async def set_eq_bass(self, enabled: bool)   -> None: await self._send("group_set_eq_bass_boost",   {"enabled": enabled})
+    async def set_eq_mid(self, enabled: bool)    -> None: await self._send("group_set_eq_mid_boost",    {"enabled": enabled})
+    async def set_eq_treble(self, enabled: bool) -> None: await self._send("group_set_eq_treble_boost", {"enabled": enabled})
 
     # ------------------------------------------------------------------
     # Internal helpers
@@ -300,6 +308,15 @@ class OD11Client:
 
         elif event == "group_max_volume":
             changed |= self._set("volume_max", msg.get("value"))
+
+        elif event == "group_eq_bass_boost":
+            changed |= self._set("eq_bass",   bool(msg.get("enabled")))
+
+        elif event == "group_eq_mid_boost":
+            changed |= self._set("eq_mid",    bool(msg.get("enabled")))
+
+        elif event == "group_eq_treble_boost":
+            changed |= self._set("eq_treble", bool(msg.get("enabled")))
 
         elif event == "speaker_group":
             self.device["group_name"] = msg.get("group_name")

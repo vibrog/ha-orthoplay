@@ -41,7 +41,7 @@ or added manually by IP address.
   because there is no separate pause command on the OD-11.
 - **Mute** may be implemented as a command per speaker, or
   by storing the current volume and set volume to 0.
-- **Sound mode** may be implemented using switches or predefined sound profiles.
+- **Sound modes** are implemented using equalizer switches.
 - **Album art** is not provided by the OD-11.
 - **Bluetooth next/previous**: The OD-11 does not support [AVRCP][], so
   track navigation is not available for Bluetooth sources.
@@ -65,7 +65,7 @@ or added manually by IP address.
 | `volume_down`          | ✓ | `group_change_volume amount:-1`                    |
 | `volume_set`           | ✓ | `group_set_volume`                                 |
 | `volume_mute`          |   | `group_set_volume vol:0`                           |
-| `select_sound_mode`    |   | `group_set_eq_{bass,mid,treble}_boost`             |
+| `select_sound_mode`    | ✓ | `group_set_eq_{bass,mid,treble}_boost`             |
 | `media_play`           | ✓ | `playback_start`                                   |
 | `media_pause`          | ✓ | `playback_stop`                                    |
 | `media_stop`           | ✓ | `playback_stop`                                    |
