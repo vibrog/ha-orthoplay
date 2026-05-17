@@ -21,6 +21,7 @@ PLATFORMS = [
     Platform.SENSOR,
     Platform.SWITCH,
     Platform.BUTTON,
+    Platform.UPDATE,
 ]
 
 
