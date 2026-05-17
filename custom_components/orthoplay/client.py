@@ -61,6 +61,7 @@ class OD11Client:
         self._running = False
         self._connected = False
 
+        # Playback / group state
         self.state: dict[str, Any] = {
             "playing":        False,
             "volume":         None,   # int 0-100
@@ -73,6 +74,14 @@ class OD11Client:
             "track_duration": None,   # float, seconds (converted from duration_ms)
             "track_position": None,
             "position_updated_at": None,  # datetime, for HA interpolation   # float, fraction 0.0-1.0
+        }
+
+        # Static device metadata — populated from global_joined
+        self.device: dict[str, Any] = {
+            "group_name":      None,
+            "latest_revision": None,
+            "master_mac":      None,
+            "speakers":        {},    # all speaker dicts from speaker_added
         }
 
         self._callbacks: list[Callable[[], None]] = []
@@ -115,6 +124,8 @@ class OD11Client:
     async def track_prev(self)                  -> None: await self._send("track_skip_to_prev")
     async def track_seek(self, fraction: float) -> None: await self._send("track_seek", {"time": fraction})
     async def track_get_pos(self)               -> None: await self._send("track_get_pos")
+
+    # Playlist
     async def playlist_add_url(self, url: str)  -> None: await self._send("playlist_add_url", {"url": url})
     async def playlist_clear(self)              -> None: await self._send("playlist_clear")
 
@@ -215,7 +226,12 @@ class OD11Client:
         # an array of update messages under the "state" key
         response = msg.get("response", "")
         changed = False                        # initialise before any branch
+
         if response == "global_joined":
+            # Store top-level device metadata
+            self.device["latest_revision"] = msg.get("latest_revision")
+            self.device["master_mac"]      = msg.get("mac")
+            # Process state array (speaker_group, speaker_added updates)
             for update in msg.get("state", []):
                 changed |= self._apply_update(update)
             # After global_joined, send group_join
@@ -225,23 +241,20 @@ class OD11Client:
                 "realtime_data": True,
                 "uid":           self._client_uid,
             }))
+
         elif response == "group_joined":
-            sources = msg.get("sources", [])
-            changed |= self._set("sources", sources)
-            state_updates = msg.get("state", [])
-            for update in state_updates:
+            changed |= self._set("sources", msg.get("sources", []))
+            for update in msg.get("state", []):
                 changed |= self._apply_update(update)
             # Request current track position when needed
             if not self.state["playing"] and self.state["source"] < 3:
                 asyncio.create_task(self.track_get_pos())
-        # All other messages are either push updates (keyed by "update")
-        # or responses to specific commands (keyed by "response")
+
         else:
-            event = msg.get("update") or response
-            if event:
-                if self._apply_update(msg):
-                    self._fire_callbacks()
-            return
+            # All other messages are either push updates
+            # or responses to specific commands
+            changed |= self._apply_update(msg)
+
         if changed:
             self._fire_callbacks()
 
@@ -288,15 +301,34 @@ class OD11Client:
         elif event == "group_max_volume":
             changed |= self._set("volume_max", msg.get("value"))
 
+        elif event == "speaker_group":
+            self.device["group_name"] = msg.get("group_name")
+
+        elif event in ("speaker_added", "speaker_state_changed"):
+            speaker = msg.get("speaker", {})
+            mac = speaker.get("mac")
+            if mac:
+                # Merge into existing speaker dict or create new entry
+                existing = self.device["speakers"].get(mac, {})
+                existing.update({
+                    "mac":          mac,
+                    "box_serial":   speaker.get("box_serial",   existing.get("box_serial")),
+                    "revision":     speaker.get("revision",     existing.get("revision")),
+                    "channel":      speaker.get("channel",      existing.get("channel")),
+                })
+                self.device["speakers"][mac] = existing
+                changed = True
+
         elif event == "entering_standby":
             # Speaker is going to sleep — WS will drop shortly
             _LOGGER.info("OD-11 entering standby")
 
         elif event not in ("", "client_joined_group", "client_left_group",
-                           "speaker_added", "speaker_lost", "speaker_group",
+                           "speaker_lost",
                            "group_master_changed", "client_color_changed",
                            "client_connected",
-                           "speaker_state_changed", "group_notification"):
+                           "list_changed",
+                           "group_notification"):
             _LOGGER.debug("OD-11 unhandled event '%s': %s", event, msg)
 
         return changed

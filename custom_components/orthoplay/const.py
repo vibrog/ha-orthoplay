@@ -1,6 +1,7 @@
 """Constants for the Orthoplay integration."""
 
 DOMAIN = "orthoplay"
+MANUFACTURER = "Teenage Engineering"
 
 DEFAULT_HOST = "od-11.local"
 DEFAULT_PORT = 8081
