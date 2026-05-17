@@ -60,6 +60,16 @@ class OD11IdentifyButton(ButtonEntity):
         self._serial = speaker["box_serial"]
         self._attr_unique_id = f"od11_{entry_id}_{self._serial}_identify"
 
+    async def async_added_to_hass(self) -> None:
+        self._client.register_callback(self._handle_update)
+
+    async def async_will_remove_from_hass(self) -> None:
+        self._client.unregister_callback(self._handle_update)
+
+    @callback
+    def _handle_update(self) -> None:
+        self.async_write_ha_state()
+
     @property
     def device_info(self) -> DeviceInfo:
         return DeviceInfo(
