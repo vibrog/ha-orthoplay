@@ -66,6 +66,7 @@ class OD11Client:
             "playing":        False,
             "volume":         None,   # int 0-100
             "volume_max":     100,    # updated from group_max_volume
+            "muted":          False,
             "source":         None,   # int 0-5
             "sources":        [],     # source dicts from group_joined
             "title":          None,
@@ -336,10 +337,14 @@ class OD11Client:
                     "toslink":      speaker.get("toslink",      existing.get("toslink")),
                     "linein":       speaker.get("linein",       existing.get("linein")),
                     "muted":        speaker.get("muted",        existing.get("muted")),
-                    "sleep_enable": speaker.get("sleep_enable", existing.get("sleep_enable")),
                     "wifi_quality": speaker.get("wifi_quality", existing.get("wifi_quality")),
                 })
                 self.device["speakers"][mac] = existing
+                # Group is muted only if all speakers are muted
+                self.state["muted"] = all(
+                    s.get("muted", False)
+                    for s in self.device["speakers"].values()
+                )
                 changed = True
 
         elif event == "entering_standby":

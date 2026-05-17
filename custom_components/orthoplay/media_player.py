@@ -30,6 +30,7 @@ _FEATURES_BASE = (
     | MediaPlayerEntityFeature.SELECT_SOURCE
     | MediaPlayerEntityFeature.VOLUME_SET
     | MediaPlayerEntityFeature.VOLUME_STEP
+    | MediaPlayerEntityFeature.VOLUME_MUTE
 )
 
 # Per-source feature flags, derived from group_joined sources list
@@ -138,6 +139,10 @@ class OD11MediaPlayer(MediaPlayerEntity):
         return vol / vol_max
 
     @property
+    def is_volume_muted(self) -> bool:
+        return self._client.state["muted"]
+
+    @property
     def media_title(self) -> str | None:
         return self._client.state["title"]
 
@@ -221,6 +226,13 @@ class OD11MediaPlayer(MediaPlayerEntity):
 
     async def async_volume_down(self) -> None:
         await self._client.volume_down()
+
+    async def async_mute_volume(self, mute: bool) -> None:
+        for mac in self._client.device["speakers"]:
+            await self._client._send(
+                "speaker_set_mute_state",
+                {"mac": mac, "muted": mute},
+            )
 
     async def async_select_source(self, source: str) -> None:
         for s in self._client.state["sources"]:

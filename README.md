@@ -39,8 +39,7 @@ or added manually by IP address.
   There is also a **sleep** command that may be used for each speaker.
 - **Pause** is equivalent to **stop**
   because there is no separate pause command on the OD-11.
-- **Mute** may be implemented as a command per speaker, or
-  by storing the current volume and set volume to 0.
+- **Mute** is sent as a separate command per speaker.
 - **Sound modes** are implemented using equalizer switches.
 - **Album art** is not provided by the OD-11.
 - **Bluetooth next/previous**: The OD-11 does not support [AVRCP][], so
@@ -64,7 +63,7 @@ or added manually by IP address.
 | `volume_up`            | ✓ | `group_change_volume amount:1`                     |
 | `volume_down`          | ✓ | `group_change_volume amount:-1`                    |
 | `volume_set`           | ✓ | `group_set_volume`                                 |
-| `volume_mute`          |   | `group_set_volume vol:0`                           |
+| `volume_mute`          | ✓ | `speaker_set_mute_state`                           |
 | `select_sound_mode`    | ✓ | `group_set_eq_{bass,mid,treble}_boost`             |
 | `media_play`           | ✓ | `playback_start`                                   |
 | `media_pause`          | ✓ | `playback_stop`                                    |
