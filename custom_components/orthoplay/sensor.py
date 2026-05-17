@@ -51,7 +51,7 @@ class OD11WiFiQualitySensor(SensorEntity):
     """WiFi signal quality sensor for an OD-11 speaker."""
 
     _attr_has_entity_name    = True
-    _attr_name               = "WiFi Quality"
+    _attr_name               = "WiFi quality"
     _attr_entity_category    = EntityCategory.DIAGNOSTIC
     _attr_native_unit_of_measurement = PERCENTAGE
     _attr_state_class        = SensorStateClass.MEASUREMENT

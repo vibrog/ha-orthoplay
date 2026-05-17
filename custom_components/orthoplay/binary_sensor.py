@@ -21,7 +21,7 @@ _LOGGER = logging.getLogger(__name__)
 CONNECTION_SENSORS = [
     ("bt",      "Bluetooth",  "bt",      "mdi:bluetooth"),
     ("toslink", "Optical",    "toslink", "mdi:toslink"),
-    ("linein",  "Line In",    "linein",  "mdi:audio-input-stereo-minijack"),
+    ("linein",  "Line in",    "linein",  "mdi:audio-input-stereo-minijack"),
 ]
 
 
