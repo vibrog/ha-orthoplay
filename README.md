@@ -55,25 +55,25 @@ or added manually by IP address.
 
 ### Media player actions supported
 
-| HA action              |   | OD-11 WebSocket command                            |
-|------------------------|---|----------------------------------------------------|
-| `turn_on`              |   | Not supported, but will auto-reconnect             |
-| `turn_off`             | ✓ | `group_enter_standby`                              |
-| `select_source`        | ✓ | `group_set_input_source`                           |
-| `volume_up`            | ✓ | `group_change_volume amount:1`                     |
-| `volume_down`          | ✓ | `group_change_volume amount:-1`                    |
-| `volume_set`           | ✓ | `group_set_volume`                                 |
-| `volume_mute`          | ✓ | `speaker_set_mute_state`                           |
-| `select_sound_mode`    | ✓ | `group_set_eq_{bass,mid,treble}_boost`             |
-| `media_play`           | ✓ | `playback_start`                                   |
-| `media_pause`          | ✓ | `playback_stop`                                    |
-| `media_stop`           | ✓ | `playback_stop`                                    |
-| `media_next_track`     | ✓ | `track_skip_to_next`                               |
-| `media_previous_track` | ✓ | `track_skip_to_prev`                               |
-| `play_media`           | ✓ | `playlist_add_url`                                 |
-| `clear_playlist`       | ✓ | `playlist_clear`                                   |
-| `shuffle_set`          |   | Not supported                                      |
-| `repeat_set`           |   | Not supported                                      |
+| HA action              | OD-11 WebSocket command                |
+|------------------------|----------------------------------------|
+| `turn_on`              | Not available, but will auto-reconnect |
+| `turn_off`             | `group_enter_standby`                  |
+| `select_source`        | `group_set_input_source`               |
+| `volume_up`            | `group_change_volume amount:1`         |
+| `volume_down`          | `group_change_volume amount:-1`        |
+| `volume_set`           | `group_set_volume`                     |
+| `volume_mute`          | `speaker_set_mute_state`               |
+| `select_sound_mode`    | `group_set_eq_{bass,mid,treble}_boost` |
+| `media_play`           | `playback_start`                       |
+| `media_pause`          | `playback_stop`                        |
+| `media_stop`           | `playback_stop`                        |
+| `media_next_track`     | `track_skip_to_next`                   |
+| `media_previous_track` | `track_skip_to_prev`                   |
+| `play_media`           | `playlist_add_url`                     |
+| `clear_playlist`       | `playlist_clear`                       |
+| `shuffle_set`          | Not available                          |
+| `repeat_set`           | Not available                          |
 
 ## Installation and setup
 
