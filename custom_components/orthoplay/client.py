@@ -47,11 +47,9 @@ class OD11Client:
     def __init__(
         self,
         host: str,
-        port: int,
         session: aiohttp.ClientSession,
     ) -> None:
         self._host = host
-        self._port = port
         self._session = session
         self._client_name = "homeassistant" # socket.gethostname()
         self._client_uid = str(uuid.uuid4())
@@ -153,7 +151,7 @@ class OD11Client:
 
     @property
     def _url(self) -> str:
-        return f"ws://{self._host}:{self._port}"
+        return f"ws://{self._host}/ws"
 
     async def _connect(self) -> bool:
         try:

@@ -5,13 +5,13 @@ import logging
 import asyncio
 
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import CONF_HOST, CONF_PORT, Platform
+from homeassistant.const import CONF_HOST, Platform
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers import device_registry as dr
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 
 from .client import OD11Client
-from .const import DEFAULT_PORT, DOMAIN, MANUFACTURER
+from .const import DOMAIN, MANUFACTURER
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -27,9 +27,7 @@ PLATFORMS = [
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     host = entry.data[CONF_HOST]
-    port = entry.data.get(CONF_PORT, DEFAULT_PORT)
-
-    client = OD11Client(host, port, async_get_clientsession(hass))
+    client = OD11Client(host, async_get_clientsession(hass))
 
     # Register secondary devices once device info is populated.
     # global_joined → group_joined populate client.device before

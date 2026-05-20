@@ -4,7 +4,6 @@ DOMAIN = "orthoplay"
 MANUFACTURER = "Teenage Engineering"
 
 DEFAULT_HOST = "od-11.local"
-DEFAULT_PORT = 8081
 DEFAULT_NAME = "OD-11"
 
 SOURCE_ICONS: dict[str | None, str] = {
