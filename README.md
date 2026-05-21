@@ -36,20 +36,17 @@ or added manually by IP address.
 - **Turn on** is not supported because the OD-11 can only be woken
   by pressing the function button. The integration reconnects
   automatically once the speaker is reachable.
-  There is also a **sleep** command that may be used for each speaker.
 - **Pause** is equivalent to **stop**
   because there is no separate pause command on the OD-11.
 - **Mute** is sent as a separate command per speaker.
 - **Sound modes** are implemented using equalizer switches.
 - **Album art** is not provided by the OD-11.
-- **Bluetooth next/previous**: The OD-11 does not support [AVRCP][], so
-  track navigation is not available for Bluetooth sources.
+- **Bluetooth next/previous**: The OD-11 does not support [AVRCP][],
+  so track navigation is not available for Bluetooth sources.
 - The OD-11 **playlist** functionality is no longer officially
-  supported by Teenage Engineering. The **play media** action rely on
-  the `playlist_add_url` command and may still work for certain URLs.
-  The OD-11 used to support [Soundcloud][] and generic URLs, but
-  further investigation is required to determine which sources and
-  audio formats are accepted.
+  supported by Teenage Engineering. MP3 over HTTP (direct play)
+  is available, but the [SoundCloud][] integration broke when
+  the service switched to AAC-based HLS.
 - **Queue insertion** (`enqueue: next`) is not supported by the
   `playlist_add_url` command, and the action will return an error.
 
@@ -124,5 +121,5 @@ few iterations.
 [od11]: https://teenage.engineering/products/od-11
 [Zeroconf]: https://www.zeroconf.org/
 [AVRCP]: https://www.bluetooth.com/specifications/
-[Soundcloud]: https://soundcloud.com/
+[SoundCloud]: https://soundcloud.com/
 [dev]: https://developers.home-assistant.io/

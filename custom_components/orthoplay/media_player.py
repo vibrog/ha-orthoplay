@@ -243,6 +243,11 @@ class OD11MediaPlayer(MediaPlayerEntity):
 
     async def async_play_media(self, media_type: str, media_id: str, **kwargs) -> None:
         """Play media on the OD-11."""
+        if not (media_id.lower().endswith(".mp3") and
+                media_id.lower().startswith("http://")):
+            raise ServiceValidationError(
+                "OD-11 playlist only support MP3"
+            )
         enqueue = kwargs.get("enqueue")
         if enqueue in (None, MediaPlayerEnqueue.REPLACE):
             # replace (default) -- clear playlist, add URL, start playback
