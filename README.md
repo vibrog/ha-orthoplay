@@ -7,9 +7,9 @@ via its WebSocket interface.
 
 ## How it works
 
-The OD-11 exposes a WebSocket server on port 8081. This integration
-maintains a persistent connection to the speaker, sends commands, and
-listens for state updates pushed by the speaker in real time.
+The OD-11 exposes a WebSocket server. This integration maintains a
+persistent connection to the speaker, sends commands, and listens for
+state updates pushed by the speaker in real time.
 
 On connection, the integration performs the Orthoplay handshake
 (`global_join`/`group_join`) to receive the current speaker state,
@@ -21,7 +21,7 @@ or added manually by IP address.
 
 ### Features
 
-- The list of **sources** are populated dynamically.
+- The list of **sources** is populated dynamically.
 - The entity icon changes to reflect the active input source.
 - **Playback controls** are shown or hidden dynamically based on
   the capabilities reported by the speaker for each source.
@@ -34,8 +34,8 @@ or added manually by IP address.
 ### Limitations
 
 - **Turn on** is not supported because the OD-11 can only be woken
-  by pressing the function button. The integration reconnects
-  automatically once the speaker is reachable.
+  by pressing the function button on the speaker. The integration
+  reconnects automatically once the speaker is reachable.
 - **Pause** is equivalent to **stop**
   because there is no separate pause command on the OD-11.
 - **Mute** is sent as a separate command per speaker.
