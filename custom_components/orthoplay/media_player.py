@@ -156,6 +156,9 @@ class OD11MediaPlayer(MediaPlayerEntity):
 
     @property
     def media_duration(self) -> float | None:
+        # Playlist source: MP3 track length not available
+        if self._client.state["source"] == 2:
+            return None
         return self._client.state["track_duration"]
 
     @property
