@@ -49,6 +49,7 @@ or added manually by IP address.
   the service switched to AAC-based HLS.
 - **Queue insertion** (`enqueue: next`) is not supported by the
   `playlist_add_url` command, and the action will return an error.
+- Track title, artist, album and duration are not available for MP3.
 
 ### Media player actions supported
 
