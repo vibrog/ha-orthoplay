@@ -44,9 +44,9 @@ or added manually by IP address.
 - **Bluetooth next/previous**: The OD-11 does not support [AVRCP][],
   so track navigation is not available for Bluetooth sources.
 - The OD-11 **playlist** functionality is no longer officially
-  supported by Teenage Engineering. MP3 over HTTP (direct play)
-  is available, but the [SoundCloud][] integration broke when
-  the service switched to AAC-based HLS.
+  supported by Teenage Engineering. MP3 file and continuous stream
+  playback over HTTP is available, but the [SoundCloud][] integration
+  broke when the service switched to AAC-based HLS in 2025.
 - **Queue insertion** (`enqueue: next`) is not supported by the
   `playlist_add_url` command, and the action will return an error.
 - Track title, artist, album and duration are not available for MP3.
