@@ -6,8 +6,9 @@ of the legendary ortho directional loudspeaker by Stig Carlsson from
 1974.
 
 In this text I will explore the technical specifications of the
-speaker and explain why I think there is an untapped potential
-due to Teenage Engineering not actively developing the firmware.
+speaker and explain why I think there is an untapped potential,
+as Teenage Engineering is not actively maintaining or improving
+the firmware.
 
 Details compared against a representative modern competitor:
 
@@ -27,7 +28,6 @@ Compared to newer speakers, the OD-11 appears outdated, and it lacks
 capabilities that should be considered a bare minimum for a premium
 speaker in this price range and targeted high-end customer group, such
 as playback of AAC or FLAC from HTTPS, or segmented streaming.
-HTTPS is a prerequisite today.
 
 By combining audio protocols and formats the OD-11 is already capable
 of encoding, and utilizing its existing software stack properly, these
@@ -91,15 +91,17 @@ these to offer the basics above:
 
 As you can see, it is merely about connecting what is already there.
 
+
+### Signs of neglect
+
+HTTPS and IPv6 are prerequisites today.
+
 The OD-11 network client is based on libcurl, which supports HTTPS.
 It is simply a matter of enabling it, and not reject adding URLs not
 matching `http://*.mp3`.
 
-
-### Signs of neglect
-
 To illustrate how little effort Teenage Engineering seems to put into
-maintaining the firmware, the OD-11 identifies itself with
+keeping the firmware up-to-date, the OD-11 identifies itself with
 `'User-Agent': 'libcurl-agent/1.0'` which is the default
 user-agent string libcurl uses when the developer omits
 `CURLOPT_USERAGENT`.
