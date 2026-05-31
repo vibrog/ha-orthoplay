@@ -1,6 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="30 20 770 220">
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="30 20 770 220" width="770" height="220">
   <style>
-    rect { fill: lightyellow; stroke: black; stroke-width: 1; }
+    rect { fill: rgba(245,166,35,0.15); stroke: black; stroke-width: 1; }
     .unsupported { fill: none; }
     text { font-family: sans-serif; font-size: 16px; dominant-baseline: middle; text-anchor: middle; }
     .header * { font-weight: bold; }

@@ -1,12 +1,13 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 220">
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 420 220" width="630" height="330">
   <style>
     #bg { fill: white; stroke: none; }
-    text { font-family: sans-serif; font-size: 16px; dominant-baseline: middle; text-anchor: middle; }
+    text { font-family: sans-serif; font-size: 14px; dominant-baseline: middle; text-anchor: middle; }
     .header text { font-weight: bold; }
     .transport text { text-anchor: start; }
-    .grid { stroke: #ccc; stroke-width: .2; }
-    #new path { fill: #c00; }
-    .new { stroke: #c00; stroke-width: 1; }
+    .grid { stroke: silver; stroke-width: .2; }
+    #new path { fill: #F5A623; }
+    .new { stroke: #F5A623; stroke-width: 2; }
   </style>
 
   <defs>
@@ -50,7 +51,7 @@
   </defs>
 
   <g class="header">
-    <g transform="translate(90,18)" class="codec">
+    <g transform="translate(95,22)" class="codec">
       <text x="0">AAC</text>
       <text x="60">MP3</text>
       <text x="120">Vorbis</text>
@@ -58,7 +59,7 @@
       <text x="240">LPCM</text>
       <text x="300">FLAC</text>
     </g>
-    <g transform="translate(4,50)" class="transport">
+    <g transform="translate(4,48)" class="transport">
       <text y="0">A2DP</text>
       <text y="30">HTTP</text>
       <text y="60">HTTPS</text>
@@ -68,7 +69,7 @@
     </g>
   </g>
 
-  <g transform="translate(90,46)">
+  <g transform="translate(95,46)">
     <path class="grid" d="M0,0H300 M0,30H300 M0,90H300 M0,120H300 M0,150H300 M60,0V150 M120,0V150 M180,0V150 M240,0V150 M300,0V150" />
     <path class="new" d="M0,60H300 M0,0V150 M60,30V150" />
     <use href="#bluetooth" x="0" y="0" />
