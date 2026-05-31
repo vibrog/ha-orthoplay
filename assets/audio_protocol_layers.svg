@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="30 20 770 220">
+  <style>
+    rect { fill: lightyellow; stroke: black; stroke-width: 1; }
+    .unsupported { fill: none; }
+    text { font-family: sans-serif; font-size: 16px; dominant-baseline: middle; text-anchor: middle; }
+    .header * { font-weight: bold; }
+    .layer * { text-anchor: end; }
+  </style>
+
+  <g class="header">
+    <g class="service">
+      <text x="220" y="40">Spotify</text>
+      <text x="380" y="40">SoundCloud*</text>
+      <text x="540" y="40">AirPlay</text>
+      <text x="700" y="40">Bluetooth</text>
+    </g>
+    <g class="layer">
+      <text x="120" y="80">Control</text>
+      <text x="120" y="120">Transport</text>
+      <text x="120" y="160">Container</text>
+      <text x="120" y="200">Codec</text>
+    </g>
+  </g>
+
+  <!-- Control -->
+  <rect x="140" y="60" width="160" height="80"/>
+  <text x="220" y="80">Spotify Connect</text>
+  <rect x="300" y="60" width="160" height="40"/>
+  <text x="380" y="80">WebSocket</text>
+  <rect x="460" y="60" width="160" height="40"/>
+  <text x="540" y="80">RTSP</text>
+  <rect x="620" y="60" width="160" height="40" class="unsupported"/>
+  <text x="700" y="80">AVRCP</text>
+
+  <!-- Transport -->
+  <text x="220" y="120">HTTPS</text>
+  <rect x="300" y="100" width="160" height="40"/>
+  <text x="380" y="120">HTTP</text>
+  <rect x="460" y="100" width="160" height="80"/>
+  <text x="540" y="120">RTP</text>
+  <rect x="620" y="100" width="160" height="80"/>
+  <text x="700" y="120">AVDTP</text>
+
+  <!-- Container -->
+  <rect x="140" y="140" width="160" height="40"/>
+  <text x="220" y="160">Ogg / ADTS</text>
+  <rect x="300" y="140" width="160" height="80"/>
+
+  <!-- Codec -->
+  <rect x="140" y="180" width="160" height="40"/>
+  <text x="220" y="200">Vorbis / AAC</text>
+  <text x="380" y="200">MP3</text>
+  <rect x="460" y="180" width="160" height="40"/>
+  <text x="540" y="200">ALAC</text>
+  <rect x="620" y="180" width="160" height="40"/>
+  <text x="700" y="200">AAC</text>
+
+</svg>

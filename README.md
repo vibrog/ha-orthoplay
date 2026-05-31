@@ -119,6 +119,10 @@ interfaces were derived from the Orthoplay JavaScript source, and
 implemented on the [Home Assistant integration structure][dev], over a
 few iterations.
 
+Through this work, I’ve learned a lot about the OD-11 speaker and its
+capabilities. [Read my thoughts on it. ↗](thoughts.md)
+
+
 [od11]: https://teenage.engineering/products/od-11
 [Zeroconf]: https://www.zeroconf.org/
 [AVRCP]: https://www.bluetooth.com/specifications/
