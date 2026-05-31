@@ -91,6 +91,8 @@ these to offer the basics above:
    and the integration stopped working either due to HTTPS or
    when the service switched to AAC-based HLS in 2025.
 
+*) Bluetooth AVRCP playback control is not supported.
+
 ![OD-11 audio capabilities](assets/audio_capabilities.svg)
 
 As you can see, it should be merely about connecting what is already there.

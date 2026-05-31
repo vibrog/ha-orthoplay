@@ -40,7 +40,7 @@
   <rect x="460" y="60" width="160" height="40"/>
   <text x="540" y="80">RTSP</text>
   <rect x="620" y="60" width="160" height="40" class="unsupported"/>
-  <text x="700" y="80">AVRCP</text>
+  <text x="700" y="80">AVRCP*</text>
 
   <!-- Transport -->
   <text x="220" y="120">HTTPS</text>
