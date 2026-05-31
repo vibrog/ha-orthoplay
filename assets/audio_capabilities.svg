@@ -7,7 +7,7 @@
     }
     @media (prefers-color-scheme: dark) {
       :root {
-        --color: black;
+        --color: white;
       }
     }
     text { font-family: sans-serif; font-size: 14px; fill: var(--color); dominant-baseline: middle; text-anchor: middle; }
