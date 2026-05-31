@@ -17,7 +17,7 @@ Details compared against a representative modern competitor:
 | 100 W, 28–20k Hz (-3dB) | Audio specifications | 100 W, 40-28k Hz (±3dB) |
 | 262,262,272 mm (hwd) | Dimensions | 305,200,311 mm |
 | $1,998 (2 pcs) | Price | $2,999.99 / $1,499.99 (/set) |
-| 2014 | Launch | 2020 / 2022 |
+| 2014 | Launch year | 2020 / 2022 |
 | 802.11 a/b/g/n, IPv4 | Wireless | 802.11 a/b/g/n/ac, RJ45 ethernet, IPv4, IPv6 |
 | TOSLINK, analog 3.5mm | Inputs | TOSLINK, analog 3.5mm, HDMI eARC |
 | AirPlay 2, Bluetooth 4 LE | Stream inputs | AirPlay 2, Google Cast, Bluetooth 5.0, Roon, DNLA/UPnP |
@@ -39,7 +39,7 @@ seem fairly straightforward to add.
 - HTTPS, including http/2 and HSTS,
   e.g. modern web server configurations
 - AAC (.m4a) over HTTPS: AAC is already supported
-  for Bluetooth and maybe Spotify Connect playback
+  for Bluetooth, and maybe Spotify Connect
 - Remove the strict URL filtering
   requiring the URL to match `http://*.mp3`
 
@@ -49,15 +49,16 @@ and modern chunked streaming protocols:
 - FLAC over HTTPS -- used by Tidal, Qobuz, Bandcamp, Deezer, Amazon Music
 - AAC over HLS (.m3u8) is the de-facto streaming (used by SoundCloud)
 - Progressive HTTP streaming (Range header in GET request)
-- aptX (used by Android devices) for high-quality Bluetooth playback from other than Apple-devices
-- Importing playlists (.m3u)
+- aptX (used by Android devices) for high-quality Bluetooth playback
+  from other than Apple devices
+- Adding tracks from playlists (.m3u)
 
 To my understanding, most of this would be drop-in functionality.
-
-
-### Capabilities
-
 We'll get back to that after a brief overview of audio streaming.
+
+
+### Audio streaming capabilities
+
 The above technical specifications lists a lot of audio formats,
 streaming standards and services. They are related in layers:
 
@@ -65,7 +66,6 @@ streaming standards and services. They are related in layers:
   : Spotify, Tidal, Qobuz, Navidrome, Plex, InTune
 - **Control layer**
   : Spotify Connect, Google Cast, AirPlay 2, DLNA/UPnP AV, Subsonic
-    (with mDNS/DNS-SD/Bonjour and SSDP/UPnP discovery)
 - **Transport** protocol (delivery method)
   : HLS, DASH, progressive and continuous HTTP streaming, ICY-metadata, RTP
 - **Container** format (packaging)
@@ -87,9 +87,13 @@ audio payload/codec and transport/link/session layer
 to show that it would be basic to combine
 these to offer the basics above:
 
+*) SoundCloud is no longer officially supported by Teenage Engineering,
+   and the integration stopped working either due to HTTPS or
+   when the service switched to AAC-based HLS in 2025.
+
 ![OD-11 audio capabilities](assets/audio_capabilities.svg)
 
-As you can see, it is merely about connecting what is already there.
+As you can see, it should be merely about connecting what is already there.
 
 
 ### Signs of neglect
@@ -98,19 +102,19 @@ HTTPS and IPv6 are prerequisites today.
 
 The OD-11 network client is based on libcurl, which supports HTTPS.
 It is simply a matter of enabling it, and not reject adding URLs not
-matching `http://*.mp3`.
+matching `http://*.mp3`. A proxy server rewriting URLs can be used as
+a workaround for playing MP3 files and continuous MP3 streams.
 
-To illustrate how little effort Teenage Engineering seems to put into
-keeping the firmware up-to-date, the OD-11 identifies itself with
-`'User-Agent': 'libcurl-agent/1.0'` which is the default
+To further illustrate how little effort Teenage Engineering seems to
+put into keeping the firmware up-to-date, the OD-11 identifies itself
+with `'User-Agent': 'libcurl-agent/1.0'` which is the default
 user-agent string libcurl uses when the developer omits
 `CURLOPT_USERAGENT`.
 
 The speaker web interface runs on
-nginx 1.4.4 which was released 24 Apr 2013,
+nginx 1.4.4 which was released 24 April 2013,
 and the WebSocket server runs
-AutobahnPython 0.5.14 (released 25 Feb 2013).
-This means that there is no patching of libraries used,
-and no security fixes.
+AutobahnPython 0.5.14 (released 25 February 2013),
+meaning no library patches or security fixes have been applied.
 
-Maybe the OD-11 is simply an abandoned product.
+Maybe the OD-11 is simply an abandoned product?
