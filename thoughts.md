@@ -63,9 +63,9 @@ The above technical specifications lists a lot of audio formats,
 streaming standards and services. They are related in layers:
 
 - **Music catalogs**
-  : Spotify, Tidal, Qobuz, Navidrome, Plex, InTune
+  : Spotify, Tidal, Qobuz, Navidrome (OpenSubsonic), Plex, InTune
 - **Control layer**
-  : Spotify Connect, Google Cast, AirPlay 2, DLNA/UPnP AV, Subsonic
+  : Spotify Connect, Google Cast, AirPlay 2, DLNA/UPnP AV
 - **Transport** protocol (delivery method)
   : HLS, DASH, progressive and continuous HTTP streaming, ICY-metadata, RTP
 - **Container** format (packaging)
