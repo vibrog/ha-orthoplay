@@ -97,20 +97,20 @@ these to offer the basics above:
 
 As you can see, it should be merely about connecting what is already there.
 
+Direct cloud playback will reject URLs not matching `http://*.mp3`.
+Many streaming sources would become available by simply removing this
+limitation, and a proxy server rewriting URLs can be used as a
+workaround for playing MP3 files and continuous MP3 streams.
+Support for additional formats such as AAC/M4A, Opus, Ogg Vorbis, and
+FLAC could likely be added via an open source decoder library such as
+libav/FFmpeg.
+
 
 ### Signs of neglect
 
 HTTPS and IPv6 are prerequisites today.
 The OD-11 network client is based on libcurl, which supports HTTPS.
 It is simply a matter of enabling it.
-
-Direct cloud playback will reject URLs not matching `http://*.mp3`.
-Many streaming sources would become available by simply removing this
-limitation, and a proxy server rewriting URLs can be used as a
-workaround for playing MP3 files and continuous MP3 streams.
-Support for additional formats such as AAC/M4A, Ogg Vorbis, Opus, and
-FLAC could likely be added via an open source decoder library such as
-libav/FFmpeg.
 
 To further illustrate how little effort Teenage Engineering seems to
 put into keeping the firmware up-to-date, the OD-11 identifies itself
