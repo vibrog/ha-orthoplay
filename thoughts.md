@@ -20,8 +20,8 @@ Details compared against a representative modern competitor:
 | 2014 | Launch year | 2020 / 2022 |
 | 802.11 a/b/g/n, IPv4 | Wireless | 802.11 a/b/g/n/ac, RJ45 ethernet, IPv4, IPv6 |
 | TOSLINK, analog 3.5mm | Inputs | TOSLINK, analog 3.5mm, HDMI eARC |
-| AirPlay 2, Bluetooth 4 LE | Stream inputs | AirPlay 2, Google Cast, Bluetooth 5.0, Roon, DNLA/UPnP |
-| Spotify, mDNS, WebSocket API | Control layer | Spotify, Tidal, Amazon Music, Qobuz, Deezer, Internet radio, mDNS, SSDP/UPnP, REST API |
+| AirPlay 2, Bluetooth 4 LE | Stream inputs | AirPlay 2, Google Cast, Bluetooth 5.0, Roon, UPnP |
+| Spotify, WebSocket API | Control layer | Spotify, Tidal, Amazon Music, Qobuz, Deezer, Internet radio, REST API |
 | MP3, AAC, Ogg Vorbis, ALAC, LPCM | Audio formats | MP3, AAC, FLAC, Ogg Vorbis, WMA, ALAC, MQA, DSD, M4A, WAV, AIFF, LPCM |
 
 Compared to newer speakers, the OD-11 appears outdated, and it lacks
@@ -101,11 +101,16 @@ As you can see, it should be merely about connecting what is already there.
 ### Signs of neglect
 
 HTTPS and IPv6 are prerequisites today.
-
 The OD-11 network client is based on libcurl, which supports HTTPS.
-It is simply a matter of enabling it, and not reject adding URLs not
-matching `http://*.mp3`. A proxy server rewriting URLs can be used as
-a workaround for playing MP3 files and continuous MP3 streams.
+It is simply a matter of enabling it.
+
+Direct cloud playback will reject URLs not matching `http://*.mp3`.
+Many streaming sources would become available by simply removing this
+limitation, and a proxy server rewriting URLs can be used as a
+workaround for playing MP3 files and continuous MP3 streams.
+Support for additional formats such as AAC/M4A, Ogg Vorbis, Opus, and
+FLAC could likely be added via an open source decoder library such as
+libav/FFmpeg.
 
 To further illustrate how little effort Teenage Engineering seems to
 put into keeping the firmware up-to-date, the OD-11 identifies itself
