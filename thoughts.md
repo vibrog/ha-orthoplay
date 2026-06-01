@@ -29,12 +29,12 @@ capabilities that should be considered a bare minimum for a premium
 speaker in this price range and targeted high-end customer group, such
 as playback of AAC or FLAC from HTTPS, or segmented streaming.
 
+
+### The wishlist
+
 By combining audio protocols and formats the OD-11 is already capable
 of encoding, and utilizing its existing software stack properly, these
 seem fairly straightforward to add.
-
-
-### The wishlist
 
 - HTTPS, including http/2 and HSTS,
   e.g. modern web server configurations
@@ -82,16 +82,16 @@ technologies that are implemented in the OD-11:
 
 ![OD-11 audio protocol layers](assets/audio_protocol_layers.svg)
 
-Or we can view these playback capabilities organized by
-audio payload/codec and transport/link/session layer
-to show that it would be basic to combine
-these to offer the basics above:
-
 *) SoundCloud is no longer officially supported by Teenage Engineering,
    and the integration stopped working either due to HTTPS or
    when the service switched to AAC-based HLS in 2025.
 
 *) Bluetooth AVRCP playback control is not supported.
+
+We can view these playback capabilities organized by
+audio payload/codec and transport/link/session layer
+to show that it would be basic to combine
+these to offer the basics above:
 
 ![OD-11 audio capabilities](assets/audio_capabilities.svg)
 
