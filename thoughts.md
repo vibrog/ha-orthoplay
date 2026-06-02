@@ -18,7 +18,7 @@ Details compared against a representative modern competitor:
 | 262,262,272 mm (hwd) | Dimensions | 305,200,311 mm |
 | $1,998 (2 pcs) | Price | $2,999.99 / $1,499.99 (/set) |
 | 2014 | Launch year | 2020 / 2022 |
-| 802.11 a/b/g/n, IPv4 | Wireless | 802.11 a/b/g/n/ac, RJ45 ethernet, IPv4, IPv6 |
+| 802.11 b/g/n, IPv4 | Wireless | 802.11 a/b/g/n/ac, RJ45 ethernet, IPv4, IPv6 |
 | TOSLINK, analog 3.5mm | Inputs | TOSLINK, analog 3.5mm, HDMI eARC |
 | AirPlay 2, Bluetooth 4 LE | Stream inputs | AirPlay 2, Google Cast, Bluetooth 5.0, Roon, UPnP |
 | Spotify, WebSocket API | Control layer | Spotify, Tidal, Amazon Music, Qobuz, Deezer, Internet radio, REST API |
