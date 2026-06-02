@@ -55,7 +55,7 @@
       <text y="60">HTTPS</text>
       <text y="90">RTP</text>
       <text y="120">S/PDIF</text>
-      <text y="150">HLS/DASH</text>
+      <text y="150">HLS,DASH</text>
     </g>
   </g>
 

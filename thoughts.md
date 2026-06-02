@@ -82,11 +82,24 @@ technologies that are implemented in the OD-11:
 
 ![OD-11 audio protocol layers](assets/audio_protocol_layers.svg)
 
-*) SoundCloud is no longer officially supported by Teenage Engineering,
-   and the integration stopped working either due to HTTPS or
-   when the service switched to AAC-based HLS in 2025.
+<!--
+|           | Spotify         | SoundCloud* | AirPlay | Bluetooth |
+|-----------|-----------------|-------------|---------|-----------|
+| Control   | Spotify Connect | WebSocket   | RTSP    | AVRCP*    |
+| Transport | HTTPS           | HTTP        | RTP     | AVDTP     |
+| Container | Ogg             |             |         |           |
+| Codec     | Vorbis          | MP3         | ALAC    | AAC       |
+-->
 
-*) Bluetooth AVRCP playback control is not supported.
+Remarks:
+- Spotify streams audio over HTTPS. The web player uses AAC,
+  while native applications have historically used Ogg Vorbis.
+  Adaptive delivery mechanisms such as HLS and DASH may be used,
+  but it is not publicly documented.
+- SoundCloud is no longer officially supported by the OD-11,
+  and the integration stopped working either due to HTTPS or
+  when the service switched to AAC-based HLS in 2025.
+- Bluetooth AVRCP playback control is not supported.
 
 We can view these playback capabilities organized by
 audio payload/codec and transport/link/session layer
@@ -94,6 +107,16 @@ to show that it would be basic to combine
 these to offer the basics above:
 
 ![OD-11 audio capabilities](assets/audio_capabilities.svg)
+
+<!--
+|          | AAC       | MP3        | Vorbis  | ALAC    | LPCM     | FLAC |
+| A2DP     | Bluetooth |
+| HTTP     |           | SoundCloud |         |
+| HTTPS    | (*)       | (*)        | Spotify | (*)     | WAV,AIFF | (*)  |
+| RTP      |           |            |         | AirPlay |
+| S/PDIF   |           |            |         |         | Optical  |
+| HLS,DASH | (*)       |
+-->
 
 As you can see, it should be merely about connecting what is already there.
 
