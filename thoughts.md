@@ -63,17 +63,17 @@ The above technical specifications lists a lot of audio formats,
 streaming standards and services. They are related in layers:
 
 - **Music catalogs**
-  : Spotify, Tidal, Qobuz, Navidrome (OpenSubsonic), Plex, InTune
-- **Control layer**
+  : Spotify, Tidal, Qobuz, Navidrome, Plex, InTune
+- **Control** layer
   : Spotify Connect, Google Cast, AirPlay 2, DLNA/UPnP AV
 - **Transport** protocol (delivery method)
   : HLS, DASH, progressive and continuous HTTP streaming, ICY-metadata, RTP
 - **Container** format (packaging)
-  : M4A, Ogg, WAV, AIFF, MPEG-TS, WebM
+  : M4A (MP4), Ogg, MPEG-TS, WebM, WAV, AIFF
 - **Codec** (audio quality)
-  : AAC, MP3, FLAC, Vorbis, Opus, ALAC
+  : AAC, MP3, FLAC, Vorbis, Opus, ALAC, AC-3, DTS
 - **Raw** (uncompressed) representation
-  : LPCM (linear PCM), AC-3 (Dolby Digital), DTS
+  : LPCM (linear PCM)
 - Acoustic **output** stage
   : DSP → DAC → class-D amplifier → speaker driver
 
