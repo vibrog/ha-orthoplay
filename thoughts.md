@@ -12,17 +12,17 @@ the firmware.
 
 Details compared against a representative modern competitor:
 
-| OD-11 | Spec | KEF LS-50 / LSX |
+| OD-11 | Spec | KEF LS50 |
 |---|---|---|
-| 100 W, 28–20k Hz (-3dB) | Audio specifications | 100 W, 40-28k Hz (±3dB) |
-| 262,262,272 mm (hwd) | Dimensions | 305,200,311 mm |
-| $1,998 (2 pcs) | Price | $2,999.99 / $1,499.99 (/set) |
-| 2014 | Launch year | 2020 / 2022 |
-| 802.11 a/b/g/n, IPv4 | Wireless | 802.11 a/b/g/n/ac, RJ45 ethernet, IPv4, IPv6 |
+| 100 W, 28–20k Hz (-3dB) | Audio | 280 W, 40-28k Hz (±3dB) |
+| 262,262,272 mm | Dimensions | 305,200,311 mm (hwd) |
+| $1,998 (2 pcs) | Price | $2,999.99 (/set) |
+| 2014 | Launch | 2020 |
+| 802.11 a/b/g/n, IPv4 | Network | 802.11 a/b/g/n/ac, RJ45 ethernet, IPv4, IPv6 |
 | TOSLINK, analog 3.5mm | Inputs | TOSLINK, analog 3.5mm, HDMI eARC |
-| AirPlay 2, Bluetooth 4 LE | Stream inputs | AirPlay 2, Google Cast, Bluetooth 5.0, Roon, UPnP |
-| Spotify, WebSocket API | Control layer | Spotify, Tidal, Amazon Music, Qobuz, Deezer, Internet radio, REST API |
-| MP3, AAC, Ogg Vorbis, ALAC, LPCM | Audio formats | MP3, AAC, FLAC, Ogg Vorbis, WMA, ALAC, MQA, DSD, M4A, WAV, AIFF, LPCM |
+| AirPlay 2, Bluetooth 4 LE | Streaming | AirPlay 2, Google Cast, Bluetooth 5.0, Roon, UPnP |
+| Spotify, WebSocket API | Services | Spotify, Tidal, Amazon Music, Qobuz, Deezer, Internet radio, REST API |
+| MP3, AAC, Ogg Vorbis, ALAC, LPCM | Formats | MP3, AAC/M4A, FLAC, Ogg Vorbis, WMA, ALAC, MQA, DSD, WAV, AIFF, LPCM |
 
 Compared to newer speakers, the OD-11 appears outdated, and it lacks
 capabilities that should be considered a bare minimum for a premium
@@ -63,7 +63,7 @@ The above technical specifications lists a lot of audio formats,
 streaming standards and services. They are related in layers:
 
 - **Music catalogs**
-  : Spotify, Tidal, Qobuz, Navidrome, Plex, InTune
+  : Spotify, Tidal, Qobuz, Bandcamp, Deezer, Navidrome, Plex
 - **Control** layer
   : Spotify Connect, Google Cast, AirPlay 2, DLNA/UPnP AV
 - **Transport** protocol (delivery method)
@@ -83,12 +83,12 @@ technologies that are implemented in the OD-11:
 ![OD-11 audio protocol layers](assets/audio_protocol_layers.svg)
 
 <!--
-|           | Spotify         | SoundCloud* | AirPlay | Bluetooth |
-|-----------|-----------------|-------------|---------|-----------|
-| Control   | Spotify Connect | WebSocket   | RTSP    | AVRCP*    |
-| Transport | HTTPS           | HTTP        | RTP     | AVDTP     |
-| Container | Ogg             |             |         |           |
-| Codec     | Vorbis          | MP3         | ALAC    | AAC       |
+            Spotify           SoundCloud*   AirPlay   Bluetooth
+            ---------------   -----------   -------   ---------
+  Control   Spotify Connect   WebSocket     RTSP      AVRCP*
+Transport   HTTPS             HTTP          RTP       AVDTP
+Container   Ogg
+    Codec   Vorbis            MP3           ALAC      AAC
 -->
 
 Remarks:
@@ -109,13 +109,14 @@ these to offer the basics above:
 ![OD-11 audio capabilities](assets/audio_capabilities.svg)
 
 <!--
-|          | AAC       | MP3        | Vorbis  | ALAC    | LPCM     | FLAC |
-| A2DP     | Bluetooth |
-| HTTP     |           | SoundCloud |         |
-| HTTPS    | (*)       | (*)        | Spotify | (*)     | WAV,AIFF | (*)  |
-| RTP      |           |            |         | AirPlay |
-| S/PDIF   |           |            |         |         | Optical  |
-| HLS,DASH | (*)       |
+          AAC        MP3         Vorbis   ALAC     LPCM     FLAC
+          ---------  ----------  -------  -------  -------  ----
+   A2DP   Bluetooth
+   HTTP              SoundCloud
+  HTTPS   +          +           Spotify  +        +        +
+    RTP                                   AirPlay
+ S/PDIF                                            Optical
+    HLS   +
 -->
 
 As you can see, it should be merely about connecting what is already there.
