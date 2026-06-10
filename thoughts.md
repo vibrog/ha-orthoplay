@@ -38,15 +38,14 @@ seem fairly straightforward to add.
 
 - HTTPS, including http/2 and HSTS,
   e.g. modern web server configurations
-- AAC (.m4a) over HTTPS: AAC is already supported
-  for Bluetooth, and maybe Spotify Connect
+- AAC (.m4a) is already supported for Bluetooth
+- FLAC is already supported for Spotify Connect -- also used by Tidal, Qobuz, Bandcamp, Deezer, Amazon Music
 - Remove the strict URL filtering
   requiring the URL to match `http://*.mp3`
 
 Next, the OD-11 should offer direct play of lossless audio,
 and modern chunked streaming protocols:
 
-- FLAC over HTTPS -- used by Tidal, Qobuz, Bandcamp, Deezer, Amazon Music
 - AAC over HLS (.m3u8) is the de-facto streaming (used by SoundCloud)
 - Progressive HTTP streaming (Range header in GET request)
 - aptX (used by Android devices) for high-quality Bluetooth playback
