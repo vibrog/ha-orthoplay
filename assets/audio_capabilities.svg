@@ -45,9 +45,9 @@
       <text x="0">AAC</text>
       <text x="60">MP3</text>
       <text x="120">Vorbis</text>
-      <text x="180">ALAC</text>
-      <text x="240">LPCM</text>
-      <text x="300">FLAC</text>
+      <text x="180">FLAC</text>
+      <text x="240">ALAC</text>
+      <text x="300">LPCM</text>
     </g>
     <g transform="translate(4,48)" class="transport">
       <text y="0">A2DP</text>
@@ -61,19 +61,19 @@
 
   <g transform="translate(95,46)">
     <path class="grid"
-          d="M14,0H300 M0,30h46m28,0H300 M0,90h166m28,0H300 M0,120h226m28,0H300 M14,150H300
-             M60,0v20m0,54V150 M120,0v46m0,28V150 M180,0v76m0,28V150 M240,0v106m0,28V150 M300,0v46m0,28V150" />
+          d="M14,0H300 M0,30h46m28,0H300 M194,60H300 M0,90h226m28,0H300 M0,120h286 M14,150H300
+             M60,0v20m0,54V150 M120,0v46m0,28V150 M180,0v46m0,28V150 M240,0v76m0,28V150 M300,0v106m0,28V150" />
     <path class="new"
-          d="M14,60h32m28,0h32m28,0h152
+          d="M14,60h32m28,0h32m28,0h32
              M0,14v32m0,28v62 M60,40v6" />
     <use href="#bluetooth" x="0" y="0" />
     <use href="#soundcloud" x="60" y="30" />
     <use href="#spotify" x="120" y="60" />
-    <use href="#airplay" x="180" y="90" />
-    <use href="#toslink" x="240" y="120" />
+    <use href="#spotify" x="180" y="60" />
+    <use href="#airplay" x="240" y="90" />
+    <use href="#toslink" x="300" y="120" />
     <use href="#new" x="0" y="60" />
     <use href="#new" x="60" y="60" />
-    <use href="#new" x="300" y="60" />
     <use href="#new" x="0" y="150" />
   </g>
 

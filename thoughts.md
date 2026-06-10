@@ -22,7 +22,7 @@ Details compared against a representative modern competitor:
 | TOSLINK, analog 3.5mm | Inputs | TOSLINK, analog 3.5mm, HDMI eARC |
 | AirPlay 2, Bluetooth 4 LE | Streaming | AirPlay 2, Google Cast, Bluetooth 5.0, Roon, UPnP |
 | Spotify, WebSocket API | Services | Spotify, Tidal, Amazon Music, Qobuz, Deezer, Internet radio, REST API |
-| MP3, AAC, Ogg Vorbis, ALAC, LPCM | Formats | MP3, AAC/M4A, FLAC, Ogg Vorbis, WMA, ALAC, MQA, DSD, WAV, AIFF, LPCM |
+| MP3, AAC, FLAC, Ogg Vorbis, ALAC, LPCM | Formats | MP3, AAC/M4A, FLAC, Ogg Vorbis, WMA, ALAC, MQA, DSD, WAV, AIFF, LPCM |
 
 Compared to newer speakers, the OD-11 appears outdated, and it lacks
 capabilities that should be considered a bare minimum for a premium
@@ -88,12 +88,12 @@ technologies that are implemented in the OD-11:
   Control   Spotify Connect   WebSocket     RTSP      AVRCP*
 Transport   HTTPS             HTTP          RTP       AVDTP
 Container   Ogg
-    Codec   Vorbis            MP3           ALAC      AAC
+    Codec   Vorbis, FLAC      MP3           ALAC      AAC
 -->
 
 Remarks:
-- Spotify streams audio over HTTPS. The web player uses AAC,
-  while native applications have historically used Ogg Vorbis.
+- Spotify streams audio over HTTPS. The OD-11 uses Ogg Vorbis and FLAC
+  for Spotify Connect playback, according to TE customer support.
   Adaptive delivery mechanisms such as HLS and DASH may be used,
   but it is not publicly documented.
 - SoundCloud is no longer officially supported by the OD-11,
@@ -109,13 +109,13 @@ these to offer the basics above:
 ![OD-11 audio capabilities](assets/audio_capabilities.svg)
 
 <!--
-          AAC        MP3         Vorbis   ALAC     LPCM     FLAC
-          ---------  ----------  -------  -------  -------  ----
+          AAC        MP3         Vorbis   FLAC     ALAC     LPCM
+          ---------  ----------  -------  -------  -------  -------
    A2DP   Bluetooth
    HTTP              SoundCloud
-  HTTPS   +          +           Spotify  +        +        +
-    RTP                                   AirPlay
- S/PDIF                                            Optical
+  HTTPS   +          +           Spotify  Spotify  +        +
+    RTP                                            AirPlay
+ S/PDIF                                                     Optical
     HLS   +
 -->
 

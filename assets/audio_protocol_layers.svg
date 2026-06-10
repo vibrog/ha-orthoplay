@@ -58,7 +58,7 @@
 
   <!-- Codec -->
   <rect x="140" y="180" width="160" height="40"/>
-  <text x="220" y="200">Vorbis</text>
+  <text x="220" y="200">Vorbis, FLAC</text>
   <text x="380" y="200">MP3</text>
   <rect x="460" y="180" width="160" height="40"/>
   <text x="540" y="200">ALAC</text>
