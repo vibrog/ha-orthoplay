@@ -52,13 +52,15 @@
   <text x="700" y="120">AVDTP</text>
 
   <!-- Container -->
-  <rect x="140" y="140" width="160" height="40"/>
-  <text x="220" y="160">Ogg</text>
+  <rect x="140" y="140" width="80" height="40"/>
+  <text x="180" y="160">Ogg</text>
   <rect x="300" y="140" width="160" height="80"/>
 
   <!-- Codec -->
-  <rect x="140" y="180" width="160" height="40"/>
-  <text x="220" y="200">Vorbis, FLAC</text>
+  <rect x="140" y="180" width="80" height="40"/>
+  <text x="180" y="200">Vorbis</text>
+  <rect x="220" y="140" width="80" height="80"/>
+  <text x="260" y="200">FLAC</text>
   <text x="380" y="200">MP3</text>
   <rect x="460" y="180" width="160" height="40"/>
   <text x="540" y="200">ALAC</text>
