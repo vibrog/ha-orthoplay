@@ -62,9 +62,9 @@
   <rect x="220" y="140" width="80" height="80"/>
   <text x="260" y="200">FLAC</text>
   <text x="380" y="200">MP3</text>
-  <rect x="460" y="180" width="160" height="40"/>
-  <text x="540" y="200">ALAC</text>
-  <rect x="620" y="180" width="160" height="40"/>
-  <text x="700" y="200">AAC</text>
+  <rect x="460" y="180" width="80" height="40"/>
+  <text x="500" y="200">ALAC</text>
+  <rect x="540" y="180" width="240" height="40"/>
+  <text x="660" y="200">AAC</text>
 
 </svg>
