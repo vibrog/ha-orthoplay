@@ -147,4 +147,21 @@ and the WebSocket server runs
 AutobahnPython 0.5.14 (released 25 February 2013),
 meaning no library patches or security fixes have been applied.
 
-Maybe the OD-11 is simply an abandoned product?
+Has the OD-11 effectively been abandoned?
+
+
+### Connected, then abandoned
+
+Unlike analog speakers, which can be perceived as improving in tone as
+mechanical components settle, connected devices such as the OD-11 have
+a functional expiry date.
+
+The Spotify Connect feature uses a persistent outbound, encrypted
+connection to cloud services (likely WebSocket, HTTP/2, or similar)
+to deliver remote control commands.
+
+Devices that rely on persistent cloud-connected control layers remain
+exposed to security vulnerabilities. The EU's Cyber Resilience Act
+(2024) requires manufacturers of products with digital elements to
+indicate the product's support period and maintain security support
+during that period.
