@@ -10,7 +10,8 @@
         --color: white;
       }
     }
-    rect { fill: var(--ortho); fill-opacity: .15; stroke: var(--color); stroke-width: .5; }
+    rect { fill: var(--ortho); fill-opacity: .15; }
+    rect, path { stroke: var(--color); stroke-width: .5; }
     .unsupported { fill: none; }
     text { font-family: sans-serif; font-size: 16px; fill: var(--color); dominant-baseline: middle; text-anchor: middle; }
     .header * { font-weight: bold; }
@@ -43,6 +44,7 @@
   <text x="700" y="80">AVRCP*</text>
 
   <!-- Transport -->
+  <path d="M140,100h9m142,0h9"/>
   <text x="220" y="120">HTTPS</text>
   <rect x="300" y="100" width="160" height="40"/>
   <text x="380" y="120">HTTP</text>
@@ -55,16 +57,19 @@
   <rect x="140" y="140" width="80" height="40"/>
   <text x="180" y="160">Ogg</text>
   <rect x="300" y="140" width="160" height="80"/>
+  <path d="M460,140h9m142,0h18m142,0h9"/>
 
   <!-- Codec -->
   <rect x="140" y="180" width="80" height="40"/>
   <text x="180" y="200">Vorbis</text>
   <rect x="220" y="140" width="80" height="80"/>
+  <path d="M220,180h9m62,0h18m142,0h9"/>
   <text x="260" y="200">FLAC</text>
   <text x="380" y="200">MP3</text>
   <rect x="460" y="180" width="80" height="40"/>
   <text x="500" y="200">ALAC</text>
   <rect x="540" y="180" width="240" height="40"/>
+  <path d="M620,180v6m0,28v6"/>
   <text x="660" y="200">AAC</text>
 
 </svg>
