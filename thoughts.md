@@ -34,12 +34,13 @@ as playback of AAC or FLAC from HTTPS, or segmented streaming.
 
 By combining audio protocols and formats the OD-11 is already capable
 of encoding, and utilizing its existing software stack properly, these
-seem fairly straightforward to add.
+seem fairly straightforward to add:
 
 - HTTPS, including http/2 and HSTS,
   e.g. modern web server configurations
-- AAC (.m4a) is already supported for Bluetooth
-- FLAC is already supported for Spotify Connect -- also used by Tidal, Qobuz, Bandcamp, Deezer, Amazon Music
+- AAC is already supported for Bluetooth
+- FLAC is already supported for Spotify -- also
+  used by Tidal, Qobuz, Bandcamp, Deezer, Amazon Music
 - Remove the strict URL filtering
   requiring the URL to match `http://*.mp3`
 
@@ -62,7 +63,7 @@ The above technical specifications lists a lot of audio formats,
 streaming standards and services. They are related in layers:
 
 - **Music catalogs**
-  : Spotify, Tidal, Qobuz, Bandcamp, Deezer, Navidrome, Plex
+  : Spotify, Tidal, Qobuz, Bandcamp, Deezer, SoundCloud, Navidrome, Plex
 - **Control** layer
   : Spotify Connect, Google Cast, AirPlay 2, DLNA/UPnP AV
 - **Transport** protocol (delivery method)
@@ -70,7 +71,7 @@ streaming standards and services. They are related in layers:
 - **Container** format (packaging)
   : M4A (MP4), Ogg, MPEG-TS, WebM, WAV, AIFF
 - **Codec** (audio quality)
-  : AAC, MP3, FLAC, Vorbis, Opus, ALAC, AC-3, DTS
+  : AAC, MP3, Vorbis, Opus, FLAC, ALAC, AC-3, DTS
 - **Raw** (uncompressed) representation
   : LPCM (linear PCM)
 - Acoustic **output** stage
@@ -124,9 +125,9 @@ Direct cloud playback will reject URLs not matching `http://*.mp3`.
 Many streaming sources would become available by simply removing this
 limitation, and a proxy server rewriting URLs can be used as a
 workaround for playing MP3 files and continuous MP3 streams.
-Support for additional formats such as AAC/M4A, Opus, Ogg Vorbis, and
-FLAC could likely be added via an open source decoder library such as
-libav/FFmpeg.
+Support for additional formats such as AAC/M4A, Ogg Vorbis, and FLAC
+is already there, or it could likely be added via an open source
+decoder library such as libav/FFmpeg, including Opus.
 
 
 ### Signs of neglect
@@ -159,9 +160,9 @@ a functional expiry date.
 The Spotify Connect feature uses a persistent outbound, encrypted
 connection to cloud services (likely WebSocket, HTTP/2, or similar)
 to deliver remote control commands.
+Devices that rely on persistent cloud-connected control layers
+remain exposed to security vulnerabilities.
 
-Devices that rely on persistent cloud-connected control layers remain
-exposed to security vulnerabilities. The EU's Cyber Resilience Act
-(2024) requires manufacturers of products with digital elements to
-indicate the product's support period and maintain security support
-during that period.
+The EU's Cyber Resilience Act (2024) requires manufacturers of
+products with digital elements to indicate the product's support
+period and maintain security support during that period.
