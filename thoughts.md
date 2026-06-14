@@ -22,7 +22,7 @@ Details compared against a representative modern competitor:
 | TOSLINK, analog 3.5mm | Inputs | TOSLINK, analog 3.5mm, HDMI eARC |
 | AirPlay 2, Bluetooth 4 LE | Streaming | AirPlay 2, Google Cast, Bluetooth 5.0, Roon, UPnP |
 | Spotify, WebSocket API | Services | Spotify, Tidal, Amazon Music, Qobuz, Deezer, Internet radio, REST API |
-| MP3, AAC, FLAC, Ogg Vorbis, ALAC, LPCM | Formats | MP3, AAC/M4A, FLAC, Ogg Vorbis, WMA, ALAC, MQA, DSD, WAV, AIFF, LPCM |
+| MP3, AAC, FLAC, Ogg Vorbis, ALAC, LPCM | Formats | MP3, AAC/M4A, FLAC, Ogg Vorbis, WMA, ALAC, MQA, WAV, AIFF, DSD, LPCM |
 
 Compared to newer speakers, the OD-11 appears outdated, and it lacks
 capabilities that should be considered a bare minimum for a premium
@@ -73,7 +73,7 @@ streaming standards and services. They are related in layers:
 - **Codec** (audio quality)
   : AAC, MP3, Vorbis, Opus, FLAC, ALAC, AC-3, DTS
 - **Raw** (uncompressed) representation
-  : LPCM (linear PCM)
+  : LPCM (linear PCM), DSD
 - Acoustic **output** stage
   : DSP → DAC → class-D amplifier → speaker driver
 
