@@ -135,10 +135,9 @@ decoder library such as libav/FFmpeg, including Opus.
 HTTPS and IPv6 are prerequisites today.
 The OD-11 network client is based on libcurl, which supports HTTPS.
 It is simply a matter of enabling it.
-
-The libcurl software version is unknown: It identifies itself
-with `'User-Agent': 'libcurl-agent/1.0'` which is the default
-user-agent string libcurl uses when the developer omits
+Note that the libcurl software version is unknown: The speaker
+identifies itself with `'User-Agent': 'libcurl-agent/1.0'` which is
+the default user-agent string libcurl uses when the developer omits
 `CURLOPT_USERAGENT`.
 
 To further illustrate how little effort Teenage Engineering seems to
