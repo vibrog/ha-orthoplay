@@ -136,13 +136,13 @@ HTTPS and IPv6 are prerequisites today.
 The OD-11 network client is based on libcurl, which supports HTTPS.
 It is simply a matter of enabling it.
 
-To further illustrate how little effort Teenage Engineering seems to
-put into keeping the firmware up-to-date, the OD-11 identifies itself
+The libcurl software version is unknown: It identifies itself
 with `'User-Agent': 'libcurl-agent/1.0'` which is the default
 user-agent string libcurl uses when the developer omits
 `CURLOPT_USERAGENT`.
 
-The speaker web interface runs on
+To further illustrate how little effort Teenage Engineering seems to
+put into keeping the firmware up-to-date, the OD-11 web interface runs on
 nginx 1.4.4 which was released 24 April 2013,
 and the WebSocket server runs
 AutobahnPython 0.5.14 (released 25 February 2013),
