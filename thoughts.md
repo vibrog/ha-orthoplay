@@ -23,6 +23,7 @@ Details compared against a representative modern competitor:
 | AirPlay 2, Bluetooth 4 LE | Streaming | AirPlay 2, Google Cast, Bluetooth 5.0, Roon, UPnP |
 | Spotify, WebSocket API | Services | Spotify, Tidal, Amazon Music, Qobuz, Deezer, Internet radio, REST API |
 | MP3, AAC, FLAC, Ogg Vorbis, ALAC, LPCM | Formats | MP3, AAC/M4A, FLAC, Ogg Vorbis, WMA, ALAC, MQA, WAV, AIFF, DSD, LPCM |
+| 16-bit/44.1 kHz | DAC | 24-bit/384 kHz |
 
 Compared to newer speakers, the OD-11 appears outdated, and it lacks
 capabilities that should be considered a bare minimum for a premium
@@ -96,9 +97,10 @@ Container   Ogg
 
 Remarks:
 - Spotify streams audio over HTTPS. The OD-11 uses Ogg Vorbis and FLAC
-  for Spotify Connect playback, according to TE customer support.
-  Adaptive delivery mechanisms such as HLS and DASH may be used,
-  but it is not publicly documented.
+  for Spotify Connect playback, and the Spotify app shows lossless
+  16-bit/44.1 kHz FLAC as the highest quality the OD-11 can play.
+  Whether adaptive delivery mechanisms such as HLS and DASH are used
+  is not publicly documented.
 - SoundCloud is no longer officially supported by the OD-11,
   and the integration stopped working either due to HTTPS or
   when the service switched to AAC-based HLS in 2025.
