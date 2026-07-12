@@ -96,14 +96,18 @@ Container   Ogg
 -->
 
 Remarks:
+
 - Spotify streams audio over HTTPS. The OD-11 uses Ogg Vorbis and FLAC
   for Spotify Connect playback, and the Spotify app shows lossless
-  16-bit/44.1 kHz FLAC as the highest quality the OD-11 can play.
+  16-bit/44.1 kHz FLAC as the highest quality the OD-11 can play.
   Whether adaptive delivery mechanisms such as HLS and DASH are used
   is not publicly documented.
-- SoundCloud is no longer officially supported by the OD-11,
-  and the integration stopped working either due to HTTPS or
-  when the service switched to AAC-based HLS in 2025.
+
+- SoundCloud is no longer officially supported by the OD-11.
+  The integration likely stopped working when the service began
+  requiring HTTPS, and would have remained broken regardless once
+  SoundCloud switched to AAC-based HLS streams in 2025.
+
 - Bluetooth [AVRCP][] playback control is not supported.
 
 We can view these playback capabilities organized by
