@@ -14,14 +14,14 @@ Details compared against a representative modern competitor:
 
 | OD-11 | Spec | [KEF LS50][] |
 |---|---|---|
-| 100 W, 28–20k Hz (-3dB) | Audio | 280 W, 40-28k Hz (±3dB) |
-| 16-bit/44.1 kHz | DAC | 24-bit/384 kHz |
+| 100 W, 28–20k Hz (-3 dB) | Audio | 280 W, 40-28k Hz (±3 dB) |
+| 16-bit/44.1 kHz | DAC/DSP | 24-bit/384 kHz |
 | MP3, AAC, FLAC, Ogg Vorbis, ALAC, LPCM | Formats | MP3, AAC/M4A, FLAC, Ogg Vorbis, WMA, ALAC, MQA, WAV, AIFF, DSD, LPCM |
 | Spotify, WebSocket API | Services | Spotify, Tidal, Amazon Music, Qobuz, Deezer, Internet radio, REST API |
 | AirPlay 2, Bluetooth 4 LE | Streaming | AirPlay 2, Google Cast, Bluetooth 5.0, Roon, UPnP |
 | 802.11 a/b/g/n, IPv4 | Network | 802.11 a/b/g/n/ac, RJ45 ethernet, IPv4, IPv6 |
-| TOSLINK, analog 3.5mm | Inputs | TOSLINK, analog 3.5mm, HDMI eARC |
-| 262,262,272 mm | Dimensions | 305,200,311 mm (hwd) |
+| TOSLINK, analog 3.5 mm | Inputs | TOSLINK, analog 3.5 mm, HDMI eARC |
+| 262,262,272 mm | Dimensions | 305,200,311 mm (hwd) |
 | $1,998 (2 pcs) | Price | $2,999.99 (/set) |
 | 2014 | Launch | 2020 |
 
