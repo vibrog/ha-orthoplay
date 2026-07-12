@@ -106,7 +106,7 @@ Remarks:
 - SoundCloud is no longer officially supported by the OD-11.
   The integration likely stopped working when the service began
   requiring HTTPS, and would have remained broken regardless once
-  SoundCloud switched to AAC-based HLS streams in 2025.
+  SoundCloud [switched to AAC-based HLS streams][hlsurl] in 2025.
 
 - Bluetooth [AVRCP][] playback control is not supported.
 
@@ -136,10 +136,11 @@ limitation, and a proxy server rewriting URLs can be used as a
 workaround for playing MP3 files and continuous MP3 streams.
 Support for additional formats such as AAC/M4A, Ogg Vorbis, and FLAC
 is already there, or it could likely be added via an open source
-decoder library such as libav/[FFmpeg][], including Opus.
+decoder library such as [libav/FFmpeg][], including Opus.
 
+[hlsurl]: https://developers.soundcloud.com/blog/api-streaming-urls
 [AVRCP]: https://www.bluetooth.com/specifications/
-[FFmpeg]: https://ffmpeg.org/
+[libav/FFmpeg]: https://ffmpeg.org/
 
 
 ### Signs of neglect
