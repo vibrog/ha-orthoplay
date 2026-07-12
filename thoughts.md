@@ -2,7 +2,7 @@
 ## "the latest technology at heart."
 
 The wireless OD-11 was released in 2014, and is a reengineered version
-of the legendary ortho directional loudspeaker by Stig Carlsson from
+of the legendary ortho directional loudspeaker by [Stig Carlsson][] from
 1974.
 
 In this text I will explore the technical specifications of the
@@ -12,7 +12,7 @@ the firmware.
 
 Details compared against a representative modern competitor:
 
-| OD-11 | Spec | KEF LS50 |
+| OD-11 | Spec | [KEF LS50][] |
 |---|---|---|
 | 100 W, 28–20k Hz (-3dB) | Audio | 280 W, 40-28k Hz (±3dB) |
 | 262,262,272 mm | Dimensions | 305,200,311 mm (hwd) |
@@ -28,6 +28,9 @@ Compared to newer speakers, the OD-11 appears outdated, and it lacks
 capabilities that should be considered a bare minimum for a premium
 speaker in this price range and targeted high-end customer group, such
 as playback of AAC or FLAC from HTTPS, or segmented streaming.
+
+[Stig Carlsson]: https://carlssonplanet.com/en/speakers/produced/sonab-od-11/
+[KEF LS50]: https://kef.com/products/ls50-wireless-2
 
 
 ### The wishlist
@@ -99,7 +102,7 @@ Remarks:
 - SoundCloud is no longer officially supported by the OD-11,
   and the integration stopped working either due to HTTPS or
   when the service switched to AAC-based HLS in 2025.
-- Bluetooth AVRCP playback control is not supported.
+- Bluetooth [AVRCP][] playback control is not supported.
 
 We can view these playback capabilities organized by
 audio payload/codec and transport/link/session layer
@@ -127,13 +130,16 @@ limitation, and a proxy server rewriting URLs can be used as a
 workaround for playing MP3 files and continuous MP3 streams.
 Support for additional formats such as AAC/M4A, Ogg Vorbis, and FLAC
 is already there, or it could likely be added via an open source
-decoder library such as libav/FFmpeg, including Opus.
+decoder library such as libav/[FFmpeg][], including Opus.
+
+[AVRCP]: https://www.bluetooth.com/specifications/
+[FFmpeg]: https://ffmpeg.org/
 
 
 ### Signs of neglect
 
 HTTPS and IPv6 are prerequisites today.
-The OD-11 network client is based on libcurl, which supports HTTPS.
+The OD-11 network client is based on [libcurl][], which supports HTTPS.
 It is simply a matter of enabling it.
 Note that the libcurl software version is unknown: The speaker
 identifies itself with `'User-Agent': 'libcurl-agent/1.0'` which is
@@ -142,12 +148,16 @@ the default user-agent string libcurl uses when the developer omits
 
 To further illustrate how little effort Teenage Engineering seems to
 put into keeping the firmware up-to-date, the OD-11 web interface runs on
-nginx 1.4.4 which was released 24 April 2013,
+[nginx][] 1.4.4 which was released 24 April 2013,
 and the WebSocket server runs
-AutobahnPython 0.5.14 (released 25 February 2013),
+[AutobahnPython][] 0.5.14 (released 25 February 2013),
 meaning no library patches or security fixes have been applied.
 
 Has the OD-11 effectively been abandoned?
+
+[libcurl]: https://curl.se/
+[nginx]: https://nginx.org/
+[AutobahnPython]: https://github.com/crossbario/autobahn-python
 
 
 ### Connected, then abandoned
@@ -162,6 +172,8 @@ to deliver remote control commands.
 Devices that rely on persistent cloud-connected control layers
 remain exposed to security vulnerabilities.
 
-The EU's Cyber Resilience Act (2024) requires manufacturers of
+The EU's [Cyber Resilience Act][] (2024) requires manufacturers of
 products with digital elements to indicate the product's support
 period and maintain security support during that period.
+
+[Cyber Resilience Act]: https://www.cyberresilienceact.eu/
