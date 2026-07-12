@@ -15,7 +15,7 @@ Details compared against a representative modern competitor:
 | OD-11 | Spec | [KEF LS50][] |
 |---|---|---|
 | 100 W, 28–20k Hz (-3 dB) | Audio | 280 W, 40-28k Hz (±3 dB) |
-| 16-bit/44.1 kHz | DAC/DSP | 24-bit/384 kHz |
+| 16-bit/44.1 kHz | DSP/DAC | 24-bit/384 kHz |
 | MP3, AAC, FLAC, Ogg Vorbis, ALAC, LPCM | Formats | MP3, AAC/M4A, FLAC, Ogg Vorbis, WMA, ALAC, MQA, WAV, AIFF, DSD, LPCM |
 | Spotify, WebSocket API | Services | Spotify, Tidal, Amazon Music, Qobuz, Deezer, Internet radio, REST API |
 | AirPlay 2, Bluetooth 4 LE | Streaming | AirPlay 2, Google Cast, Bluetooth 5.0, Roon, UPnP |
